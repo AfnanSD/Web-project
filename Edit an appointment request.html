@@ -4,10 +4,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Edit an appointment</title>
+		<title>Edit an appointment request</title>
 	</head>
 	<body>
-		<h1>Edit an appointment</h1>
+		<!--enough??-->
+		<h1>Edit an appointment request</h1>
 		<form method="post" action="#">
 			<p>
 				<strong>Pet:</strong>
@@ -29,13 +30,16 @@
 				<strong>Service:</strong>
 				<br>
 				<label>
-					<input type="radio" name="service" value=" veterinary care">Veterinary care
+					<input type="radio" name="service" value="general periodic clinical examination">General periodic clinical examination
+					<!--veterinary care-->
 				</label>
 				<label>
-					<input type="radio" name="service" value="grooming">Grooming
+					<input type="radio" name="service" value="vaccinations">Vaccinations
+					<!--grooming-->
 				</label>
 				<label>
-					<input type="radio" name="service" value="training">Training
+					<input type="radio" name="service" value="treat wounds">Treat wounds
+					<!--trarining-->
 				</label>
 				<label>
 					<input type="radio" name="service" value="other">Other
@@ -44,7 +48,8 @@
 			<p>
 				<strong>Note:</strong>
 				<br>
-				<textarea name="note" rows="3" cols="40"></textarea>
+				<textarea name="note" rows="3" cols="40">Any extra information you want to tell us about..
+				</textarea>
 			</p>
 			<p>
 				<strong>Date:</strong>
