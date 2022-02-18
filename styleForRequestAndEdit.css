@@ -1,6 +1,7 @@
 /*external style sheet for:
 Edit an appointment request
-Request an appointment*/
+Request an appointment
+about us*/
 
 body{
     background-color: #FAE8E0;
@@ -14,4 +15,12 @@ div{
     margin-top: 7%;
     border-radius: 10px;
     padding: 20px;
+}
+
+.aboutUsImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 170px;
 }
