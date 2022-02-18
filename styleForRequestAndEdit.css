@@ -1,0 +1,26 @@
+/*external style sheet for:
+Edit an appointment request
+Request an appointment
+about us*/
+
+body{
+    background-color: #FAE8E0;
+    font-family: "Garamond" , Times, serif;;
+}
+
+div{
+    background: white;
+    width: 70%;
+    margin: auto;
+    margin-top: 7%;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.aboutUsImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 170px;
+}
