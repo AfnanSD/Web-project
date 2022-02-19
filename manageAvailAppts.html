@@ -3,12 +3,14 @@
 <head>
     <title>Manage Available Appointments</title>
     <meta charset="ufc-8" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
 </head>
 
 <body>
+    <div>
     <h1>Appointment:</h1>
-<table border="1">
-    <tr>
+<table align="center" border="1" style="width: 100%;">
+    <tr style="background-color: #63452A; color: #FAE8E0 ;">
         <th>Day </th>
         <th>Service</th>
         <th>Time</th>
@@ -17,19 +19,21 @@
 
     <!--Imaginary Appts-->
     <tr>
-        <td>Thursday</td>
-        <td>Grooming</td>
-        <td>10:45</td>
-        <td><form action="#" method="post"><a href="#">Edit</a>
-        </form></td>
-        <td><form action="#" method="post"><a href="#">Delete</a>
-        </form></td>
-        <td><form action="#" method="post"><a href="#">View</a>
-        </form></td>
+        <th>Thursday</th>
+        <th>Grooming</th>
+        <th>10:45</th>
+        <th><form action="#" method="post"><a href="#">Edit</a>
+        </form></th>
+        <th><form action="#" method="post"><a href="#">Delete</a>
+        </form></th>
+        <th><form action="#" method="post"><a href="#">View</a>
+        </form></th>
     </tr>
 </table>
 <br>
-<h6><a href="managerProfile.html">Return to personal page</a></h6>
+<a href="managerProfile.html" class="buttonlike">Return to personal page</a>
+<a href="setAvailableAppts.html" class="buttonlike">Set available appointenmts</a>
+    </div>
 </body>
 
 </html>
