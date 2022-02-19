@@ -47,8 +47,12 @@
             }
             
             a { 
-                text-decoration: none;}
-            .buttonlike:link, .buttonlike:visited {
+                text-decoration: none;
+                color: #44475c;
+            }
+            a:hover{ color: rgb(100, 100, 121);}
+
+            #buttonlike,.buttonlike:link, .buttonlike:visited {
                 font: 13px Arial;
                 text-decoration: none;
                 background-color: #EEEEEE;
@@ -56,6 +60,16 @@
                 padding: 2px 6px 2px 6px;
                 border-radius: 3px;
                 border: 1px solid #333333;
+            }
+
+            #link:hover{
+                font: 30px ;
+                text-decoration: none;
+                background-color: #f3d2c4;
+                /*color: #333333;*/
+                padding: 15px 15px 15px 15px;
+                /*border-radius: 3px;
+                border: 1px solid;*/
                 /*
                 background-color: silver;
                 color: black;
@@ -74,8 +88,10 @@
     <body>
         <!--<a href="PreviousApps.html" class="button">Previous Appointments</a>-->
         <div class="container">
-            <div class="logo"><img src="logo 1.1.jpg" alt="logo" width="500px" height="170px"></div>
-            <div class="profile"><a href="mangeprofile.html">Edit profile</a></div>
+            <div class="logo">
+                <img src="logo 1.1.jpg" alt="logo" width="500px" height="170px">
+            </div>
+            <div class="profile" id="link"><a href="mangeprofile.html">Edit profile</a></div>
             <div class="add">add pet link</div>
             <div class="list">pet list</div>
             <div class="upcoming"">
@@ -146,7 +162,7 @@
                 <br>
                 <a href="Request an appointment.html" class="buttonlike">Request an appointment</a>
             </div>
-            <div class="previous"><a href="PreviousApps.html">View previous appointments here</a> </div>
+            <div class="previous" id="link"><a href="PreviousApps.html">View previous appointments here</a> </div>
             <div class="contact">
                 Let us help you
 				<!--our contact info:-->
