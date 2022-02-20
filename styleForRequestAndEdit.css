@@ -32,3 +32,17 @@ div{
     padding: 2px 6px 2px 6px;
     border-radius: 3px;
     border: 1px solid #333333;}
+ 
+.logoutb:link, .logoutb:visited {
+    font: 20px Arial;
+    text-decoration: none;
+    background-color: #cfbbbb;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #333333;} 
+.logoutb:hover{
+    font:25px Arial;
+    text-decoration: underline;
+    background-color: #c2adad;
+}   
