@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+   <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+   <title>Edit pet's profile</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+
+ <body>
+     <div>
+ 
+
+        <h1>Your pet's profile:</h1>
+		<fieldset>
+			<legend>pet's info:</legend>
+          <img src="acc.jpg" alt="pic of akea dog" height="75" width="75"><br>
+
+                <form action="#" method="post">
+                    <lable> Name:
+                        <input name="name", type="text", placeholder="dogy" maxlength="30"><br>
+                    </lable><br>
+                    <label>
+                        Breed:
+                        <input name="breedname", type="text", placeholder="dog" maxlength="30"><br>
+                    </label><br>
+
+                    <label>Date of birth:
+                        <input name="date", placeholder="1/7/2019" type="date", maxlength="30"><br>
+                    </label><br>
+                    <label>Gender:
+                        <input name="text", placeholder="male" type="text", maxlength="30"><br>
+                    </label><br>
+
+                    <lable>Status:
+                        <input name="statustext", placeholder="sprayed" type="text", maxlength="30"><br>
+                    </lable><br>
+                    <lable>Medical record(Optional):<br>
+<textarea >      </textarea>   
+</lable>
+</lable><br>
+<lable>Vaccinated:(Optional):<br>
+<textarea >      </textarea>   
+</lable>
+</lable><br>
+<lable>Personal Picture (Optional):<br>
+    <input name="pfp" value="pfp" type="file" accept="image/*"><br>
+  </lable>
+                </form> 
+                <br>
+              <br>
+              <input type="submit" value="Confirm">
+              <a href="costumerPage.html" class="buttonlike">Return to personal page</a>
+              </fieldset>
+     </div>      
+ </body>
+</html>
