@@ -2,32 +2,44 @@
 <html>
 	<head>
    <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+   <style>
+  .petprofilepic {
+  flex: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}     
+   </style>
  </head>
-<body>
-<h1>your prfile:</h1>
+<body><div>
+<h1>Your pet's profile:</h1>
 		<fieldset>
-			<legend>profile</legend>
-<img src="acc.jpg" alt="pic of akea dog" height="75" width="75">
+			<legend>Pet's profile</legend>
+<img class="petprofilepic"src="dogy.jpg.jpg" alt="pic of a dog" height="80" width="80">
   			 <table border="1">
                 <tbody>               
                     <tr>
-                    <th>popy</th>
-                    <th> bird</th>
-                    <th>7/2/2021</th>
-                    <th>female</th>
-                     <th>broken angeles</th>
-                    <th> never</th>
-                    <td><form action="#" method="post"><a href="#">Edit</a>
+                    <th>dogy</th>
+                    <th> dog</th>
+                    <th>1/7/2019</th>
+                    <th>male</th>
+                    <th>spayed</th>
+                     <th>null</th>
+                    <th> null</th>
+                    <td><form action="#" method="post"><a href="#"><img src="edit.jpg" alt=" an edit icon" height="28" width="28"></a>
                     </form></td>
-                    <td><form action="#" method="post"><a href="#">Delete</a>
+                    <td><form action="#" method="post"><a href="#"><img src="delet.jpg" alt="a delet icon" height="28" width="28"></a>
                     </form></td>
                      </tr></tbody> 
                     <thead>
-                        <tr>
+                        <tr style="background-color: antiquewhite;">
                             <th>Name:</th>
                             <th>Breed:</th>
                             <th>Date of birth:</th>
                             <th>Gender:</th>
+                            <th>Status</th>
                              <th> Medical record:</th>
                             <th> vaccinated:</th>
                             <th>Edit</th>
@@ -36,7 +48,8 @@
                     </thead> 
                 </table>       
 
-  </fieldset>
+  </fieldset></div>
        </body> 
         </html>
+               
                
