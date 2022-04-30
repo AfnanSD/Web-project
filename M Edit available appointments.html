@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Appointment</title>
+    <meta charset="ufc-8" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+    <link rel="shortcut icon" type="image/x-icon" href="picture\tinyLogo.PNG" />
+    <style>
+        td{
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <img src="picture\logo 1.1.jpg" alt="logo" class="aboutUsImage">
+    <div>
+    <h1>Edit appointment: </h1>
+    <br>
+<table align="center" border="1" style="width: 100%;">
+    <tr style="background-color:#faebd7 ; color: #695e59 ;">
+     
+        <th>Day </th>
+        <th>Service</th>
+        <th>Time</th>
+        <th>Veterinary</th>
+    
+    </tr>
+    <!--Imaginary reqs-->
+    <tr>
+        <td>
+            <input type="date" name="date" ></td>
+        <td>
+        <select name="rates" id="rates">
+            <option value="1" selected>Dental Care</option>
+            <option value="2">Treat Wounds</option>
+            <option value="3">Vaccinations</option>
+            <option value="4">Treat Wounds</option>
+            <option value="5">Blood Tests</option>
+            <option value="6">General Examination</option>
+         </select>
+        </td>
+        <td>
+            <input type="time" name="time" >
+
+        </td>
+        <td>
+            <select name="vets" id="vets">
+                <option value="1" selected>Dr. Ahmed</option>
+                <option value="2">Dr. Sara</option>
+                <option value="3">Dr. Lama</option>
+             </select>
+        </td>
+
+    </tr>
+
+</table>
+<br><br>
+<input type="submit" value="Submit">
+<a href="Manager page.html" class="buttonlike">Return to personal page</a>
+    </div>
+</body>
+</html>

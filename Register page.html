@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+	<title> Register Page </title>
+	<meta charset="ufc-8" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="picture\tinyLogo.PNG" />
+	<style type="text/css">
+			h1 img {position:absolute;
+			float:center;
+			 z-index:-1;
+			 height:90vh;
+			 width:60vh;
+			 margin-top:-20vh; 
+			 margin-left:-23vh;
+			} 
+			body{background-color:#FAE8E0 ;}
+		div{margin: 0;
+			height: 50vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+			background: url(./background.jpg);
+			background-size: cover;}
+		#input input{height:40px;
+				width:250px;
+				margin-top:0px;
+				border-radius:5px;
+				border-style:solid;}
+		a,h1{text-align:center;
+			margin-top:3vh;}
+		h1,label{color:#4A4E69}
+		#OpPhoto{height: 130px;
+				margin-top: 7vh ;}
+		
+		
+	</style>
+  </head>
+  <body>
+	  
+	<center><h><img id="OpPhoto"src="picture\acc.jpg" alt="optional Photo"></h></center>
+    <h1><img src="picture\28181_30881_1.png" alt="logo" >SignUp</h1>
+	<!--<p> Enter the user name and the password <p>-->
+	<div>
+	<form method= "post"> 
+	<span id="input">
+	  <br><input name="Fname", type="text", placeholder="First Name" maxlength="30" required><br>
+	  <br><input name="Lname", type="text", placeholder="Last Name" maxlength="30" required><br>
+	  <br><input name="email", placeholder="Email Name" type="text" maxlength="30" required><br>
+	  <br><input name="password", placeholder="Password" type="password" maxlength="30" required><br>
+	  <br><input name="phone", placeholder="Phone Number" type="text" pattern="\d*" maxlength="12" required><br>
+	</span>
+	  <p><label> Gender: <!-- <br><input name="gender", type="text", size="25", maxlength="30"> </label><p>-->
+	  <!--<p>-->
+		<label> 
+		  <input name ="gender" type="radio" value="male" required> Male
+		</label><!-- the value is the answent which is sent nit the label-->
+	  <!--</p>-->
+	  <!--<p> -->
+		<label> 
+		  <input  name ="gender" type="radio" value="female" required> Female </label><!-- the choises of the same category must have the same name-->
+	  </p>
+	  <p>
+		  <lable>Personal Picture (Optional):<br>
+			<input name="pfp" value="pfp" type="file" accept="image/*"><br>
+		  </lable>
+	  </p>
+	  <p> 
+	      <input type="submit", value="Sing Up">
+	      <input type="reset", value="Clear">
+		  <center><p><a href="Log in page.html">already have an account?</p></center>
+	  </p>
+	</form>
+	</div>
+	<!--<center><p><a href="R.html">already have an account?</p></center> -->
+  </body>
+</html>
+

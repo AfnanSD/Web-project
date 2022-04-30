@@ -1,0 +1,42 @@
+.maintitle{
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    color: #63452A;
+    position: relative;
+}
+
+
+
+code {
+    background: #d6c8c2;
+    border-radius: 6px;
+    color: rgb(95, 73, 32);
+    display: block;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    padding: 24px 15px;
+    text-align: center;
+  }
+
+  header code {
+    background: #FAE8E0;
+    border-radius: 6px;
+    color: rgb(95, 73, 32);
+    display: block;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    padding: 24px 15px;
+    text-align: center;
+  }
+  header,
+  section,
+  aside,
+  footer {
+    margin: 0 0 0 0; 
+  }
+  section {
+    display: inline-block;
+    width: 100%;
+  }
+  footer {
+    margin-bottom: 0;
+  }
+
