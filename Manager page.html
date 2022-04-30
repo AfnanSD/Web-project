@@ -69,12 +69,29 @@
             }
 
             #link:hover{
-                font: 30px ;
+              /*  font: 30px ;*/
                 /*font-size: larger;*/
                 text-decoration: none;
                 background-color: #f3d2c4;
-                padding: 15px 15px 15px 15px;
+               /* padding: 15px 15px 15px 15px;*/
             }
+          nav ul {
+display: none; 
+list-style: none;
+            }
+        nav:hover ul {
+display: block; 
+            } 
+           li {
+                border:2px solid white;
+                background-color: #f3d2c4;
+
+            }
+            .li2:hover{
+                text-decoration: none;
+                background-color: #f3d2c4;
+            }
+
 
             h3 { text-align: left;}
         </style>
@@ -93,8 +110,21 @@
         <div class="add"  id="link">
             <a href="M View appointments request.html" style="font-size: larger;">View appointment requests</a>
         </div>
-            <div class="list"id="link" ><a href="M About us.html" style="font-size: larger;">About us</a></div>
-            <div class="upcoming"">
+
+            <div class="list">
+                <nav><p style="font-size: large;">About us</p>
+            <ul>
+<li>
+    <div class="li2" ><a href="M About us.html" > View about us</a></div>
+</li>
+<li>
+    <div class="li2" ><a href="M Edit about us.html" > Edit about us</a></div>
+</li>
+            </ul>
+                </nav>
+            </div>
+
+            <div class="upcoming">
                 <h3>Upcoming appoitments:</h3>
                 <table border="1">
                     <thead>
