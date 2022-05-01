@@ -1,0 +1,110 @@
+.logo { grid-area: logo;}
+
+.background{
+    background-image:url("pet-care.jpg") ;
+    background-repeat: no-repeat;
+    background-color: #FAE8E0;
+    background-position:right ;
+    width: 800px;
+    height: 410px;
+    padding-left: 640px;
+    padding-top:150px ;
+  }
+
+p{
+    text-decoration-style: solid;
+    text-shadow: 1px 1px;
+  font-size: 30px;
+  position: absolute;
+    bottom: 90px;
+    left: 10px;
+
+}
+/* body{background-color:#FAE8E0 ;}*/
+span{
+font-size: 50px;}
+
+.container {
+    display: grid;
+    grid-template-areas: 'logo logo logo'
+  /*  'upcoming upcoming profile'
+    'upcoming upcoming add'
+    'requests requests list'*/
+    'contact contact contact';
+    gap: 10px;
+
+}
+
+.container div{
+    text-align: center;
+    background-color: #FAE8E0;
+    padding-top:30px;
+}
+.contact{
+    margin-top: 10px;
+    background-color: #FAE8E0;
+    text-align: center;
+
+}
+.account_icon{
+padding-left: 1260px;
+
+}
+/* .container2 {
+    margin-top: 10px;
+
+      display: flex;
+      <div class="container2">
+    <div class="services" id="s1">General periodic clinical examination</div>
+    <div  class="services"id="s2" >Vaccinations</div>
+    <div  class="services">Treat wounds</div>
+    <div  class="services">Blood tests</div>
+    <div  class="services">Dental care</div>
+    <div  class="services">And more</div>
+  </div>
+
+        }*/
+
+
+a:hover{ color: rgb(100, 100, 121);}
+
+#buttonlike,.buttonlike:link, .buttonlike:visited {
+    font: 13px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #333333;
+}
+
+.services:hover{
+    font: 30px ;
+    text-decoration: none;
+    background-color: #f3d2c4;
+    /*color: #333333;*/
+    padding: 15px 15px 15px 15px;
+    /*border-radius: 3px;
+    border: 1px solid;*/
+    /*
+    background-color: silver;
+    color: black;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 30%;*/
+}
+#s1{
+    color: #44475c;
+}
+.services{
+    margin-right: 10px;
+    background-color: #FAE8E0;
+}
+nav ul {
+    display: none; 
+    list-style: none;
+}
+h3 { text-align: left;}
+/*td:hover {background-color: #ffffff;}*/
