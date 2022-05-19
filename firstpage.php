@@ -206,7 +206,15 @@ gap:2rem;}
     margin-bottom:100px ;    
 
 }
-        </style>
+
+.contactUs{
+    margin-left:30%;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    font-size: large;
+}
+    </style>
     </head>
 
 
@@ -311,13 +319,13 @@ gap:2rem;}
  </section>
 
  <div class="contact">
- <div class ="c1">
+ <div class ="c1 contactUs" style = "padding-bottom=0px;">
 
               Let us help you
 			 <br>call us directly at : 8001249999
 				 <br>or contact us via Email : <a href="mailto:info@FilineFine.com">info@FilineFine.com</a> </div>
 
-                 <div class ="c2">
+                 <div class ="c2 contactUs" style="padding: top 0px;">
                  <br>
                  Check us out to explore more at @feelin_fin in
        <img src="social-fb.jpg" alt="background image" hieght="15"  width="15" > 
