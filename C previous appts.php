@@ -39,7 +39,7 @@ $dbname = "web_project";
 
 // Create connection by passing these connection parameters
 $conn = new mysqli($servername, $username, $password, $dbname);
-echo "inner join on appointment: ";
+//echo "inner join on appointment: ";
 echo "<br>";
 echo "<br>";
 //sql query to display all student_address table based on student id using inner join
