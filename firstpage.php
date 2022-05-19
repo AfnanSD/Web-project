@@ -3,7 +3,7 @@
 <!-- View Previous Appointments, current page: PERSONAL-->
     <head> 
         <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
-        <title>First Page</title>
+        <title>Home Page</title>
         <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
         <style>
             .logo { grid-area: logo;}
