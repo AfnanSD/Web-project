@@ -90,7 +90,6 @@
                                 echo'
                                 </tbody>
                                 </table>';
-
                             }
                             else
                                 echo '<p><span class="error">* There are no upcoming appointments</span></p>';
@@ -182,8 +181,13 @@
                 Let us help you
 				<!--our contact info:-->
 				<br>call us directly at : 8001249999
-				<br>or contact us via Email : <a href="mailto:info@FilineFine.com">info@FilineFine.com</a>
-                lfjgkj'l
+                <?php
+                $query = "SELECT `MANAGER_EMAIL` FROM `clinic_manager`;" ;
+                $result = mysqli_query($database,$query);
+                $row = mysqli_fetch_assoc($result);
+                $email = $row['MANAGER_EMAIL'];
+                echo '<br>or contact us via Email : <a href="mailto:'.$email.'">'.$email.'</a>';
+                ?>
             </div>
         </div>
     </body>
