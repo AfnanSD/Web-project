@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 01:25 PM
+-- Generation Time: May 19, 2022 at 07:35 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -32,10 +32,18 @@ CREATE TABLE `appointment` (
   `TIME` time NOT NULL,
   `DATE` date NOT NULL,
   `STATUS` varchar(30) NOT NULL,
-  `REVIEW` varchar(200) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
+  `REVIEW` varchar(200) DEFAULT NULL,
+  `NOTE` varchar(200) DEFAULT NULL,
   `SERVICE_NAME` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`AID`, `TIME`, `DATE`, `STATUS`, `REVIEW`, `NOTE`, `SERVICE_NAME`) VALUES
+(1, '10:00:00', '2022-02-02', 'AVAILABLE', NULL, NULL, 'GROOMING'),
+(2, '02:00:00', '2022-02-02', 'UPCOMING', NULL, NULL, 'Grooming');
 
 -- --------------------------------------------------------
 
@@ -49,6 +57,14 @@ CREATE TABLE `book_appointment` (
   `AID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `book_appointment`
+--
+
+INSERT INTO `book_appointment` (`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES
+('A@GAMIL.COM', 3, 0),
+('A@GAMIL.COM', 3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -60,8 +76,26 @@ CREATE TABLE `clinic_manager` (
   `MANAGER_PASSWORD` varchar(40) NOT NULL,
   `CLINIC_EMAIL` varchar(40) NOT NULL,
   `CLINIC_DESCRIPTION` varchar(300) NOT NULL,
-  `CLINIC_LOCATION` point NOT NULL,
+  `CLINIC_LOCATION` point DEFAULT NULL COMMENT 'NULL?',
   `CLINIC_PHONE_NUMBER` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `clinic_manager`
+--
+
+INSERT INTO `clinic_manager` (`MANAGER_EMAIL`, `MANAGER_PASSWORD`, `CLINIC_EMAIL`, `CLINIC_DESCRIPTION`, `CLINIC_LOCATION`, `CLINIC_PHONE_NUMBER`) VALUES
+('MANAGER@GMAIL.COM', 'PASSWORD', 'CLINIC@GMAIL.COM', 'DESC', NULL, '1234567890');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clinic_pictures`
+--
+
+CREATE TABLE `clinic_pictures` (
+  `MANAGER_EMAIL` varchar(40) NOT NULL,
+  `PICTURES` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -72,11 +106,19 @@ CREATE TABLE `clinic_manager` (
 
 CREATE TABLE `clinic_service` (
   `SERVICE_NAME` varchar(40) NOT NULL,
-  `SERVICE_PHOTO` binary(255) NOT NULL,
+  `SERVICE_PHOTO` varchar(255) DEFAULT NULL,
   `SERVICE_DESCRIPTION` varchar(100) NOT NULL,
   `SERVICE_PRICE` double NOT NULL,
   `CLINIC_MANAGER_EMAIL` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `clinic_service`
+--
+
+INSERT INTO `clinic_service` (`SERVICE_NAME`, `SERVICE_PHOTO`, `SERVICE_DESCRIPTION`, `SERVICE_PRICE`, `CLINIC_MANAGER_EMAIL`) VALUES
+('GROOMING', NULL, 'DESC', 100, 'MANAGER@GMAIL.COM'),
+('Vaccination', NULL, 'dexc', 100, 'MANAGER@GMAIL.COM');
 
 -- --------------------------------------------------------
 
@@ -91,9 +133,17 @@ CREATE TABLE `pet` (
   `PET_GENDER` char(1) NOT NULL,
   `BREED` varchar(20) NOT NULL,
   `SPAYED_OR_NEUTERED_STATUS` tinyint(1) NOT NULL,
-  `PET_PHOTP` binary(255) NOT NULL,
+  `PET_PHOTO` varchar(255) DEFAULT NULL,
   `PET_OWNER_EMAIL` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pet`
+--
+
+INSERT INTO `pet` (`PID`, `PET_NAME`, `DATE_OF_BIRTH`, `PET_GENDER`, `BREED`, `SPAYED_OR_NEUTERED_STATUS`, `PET_PHOTO`, `PET_OWNER_EMAIL`) VALUES
+(1, 'KITTY', '0000-00-00', 'F', 'BREDD', 0, NULL, 'A@GAMIL.COM'),
+(3, 'KITTYTWO', '2022-01-01', 'F', 'BREDD', 0, NULL, 'A@GAMIL.COM');
 
 -- --------------------------------------------------------
 
@@ -119,9 +169,16 @@ CREATE TABLE `pet_owner` (
   `FIRST_NAME` varchar(20) NOT NULL,
   `LAST_NAME` varchar(20) NOT NULL,
   `OWNER_GENDER` char(1) NOT NULL,
-  `OWNER_PHOTO` binary(255) NOT NULL COMMENT '255 enough?',
+  `OWNER_PHOTO` varchar(255) DEFAULT NULL COMMENT '255 enough?',
   `CLINIC_MANAGER_EMAIL` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pet_owner`
+--
+
+INSERT INTO `pet_owner` (`OWNER_EMAIL`, `OWNER_PHONE_NUMBER`, `OWNER_PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `OWNER_GENDER`, `OWNER_PHOTO`, `CLINIC_MANAGER_EMAIL`) VALUES
+('A@GAMIL.COM', '1234567890', 'PASSWORD', 'FIRST', 'LAST', 'F', NULL, 'MANAGER@GMAIL.COM');
 
 -- --------------------------------------------------------
 
@@ -158,6 +215,12 @@ ALTER TABLE `book_appointment`
 --
 ALTER TABLE `clinic_manager`
   ADD PRIMARY KEY (`MANAGER_EMAIL`);
+
+--
+-- Indexes for table `clinic_pictures`
+--
+ALTER TABLE `clinic_pictures`
+  ADD PRIMARY KEY (`MANAGER_EMAIL`,`PICTURES`);
 
 --
 -- Indexes for table `clinic_service`
@@ -202,13 +265,13 @@ ALTER TABLE `pet_vaccination_list`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `AID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -226,6 +289,12 @@ ALTER TABLE `appointment`
 ALTER TABLE `book_appointment`
   ADD CONSTRAINT `FK7` FOREIGN KEY (`PET_OWNER_EMAIL`) REFERENCES `pet_owner` (`OWNER_EMAIL`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK8` FOREIGN KEY (`PID`) REFERENCES `pet` (`PID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `clinic_pictures`
+--
+ALTER TABLE `clinic_pictures`
+  ADD CONSTRAINT `FK0` FOREIGN KEY (`MANAGER_EMAIL`) REFERENCES `clinic_manager` (`MANAGER_EMAIL`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `clinic_service`
