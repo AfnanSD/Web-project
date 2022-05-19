@@ -179,14 +179,19 @@
             <div class="contact">
                 <a href="AB0UT US.php">Get to know us!</a> <br>
                 Let us help you
-				<!--our contact info:-->
-				<br>call us directly at : 8001249999
                 <?php
-                $query = "SELECT `MANAGER_EMAIL` FROM `clinic_manager`;" ;
-                $result = mysqli_query($database,$query);
-                $row = mysqli_fetch_assoc($result);
-                $email = $row['MANAGER_EMAIL'];
-                echo '<br>or contact us via Email : <a href="mailto:'.$email.'">'.$email.'</a>';
+                    $queryphone = "SELECT `CLINIC_PHONE_NUMBER` FROM `clinic_manager`;" ;
+                    $resultphone = mysqli_query($database,$queryphone);
+                    $rowphone = mysqli_fetch_assoc($resultphone);
+                    $phone = $rowphone['CLINIC_PHONE_NUMBER'];
+
+                    echo '<br>call us directly at : '.$phone.'';
+                    
+                    $query = "SELECT `MANAGER_EMAIL` FROM `clinic_manager`;" ;
+                    $result = mysqli_query($database,$query);
+                    $row = mysqli_fetch_assoc($result);
+                    $email = $row['MANAGER_EMAIL'];
+                    echo '<br>or contact us via Email : <a href="mailto:'.$email.'">'.$email.'</a>';
                 ?>
             </div>
         </div>
