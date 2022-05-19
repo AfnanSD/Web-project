@@ -95,7 +95,7 @@
 					}
 					if($result2){
 						echo "<script> window.alert('Appointmend added successfully'); </script>";
-						$querySetUpcoming = "UPDATE appointment SET STATUS = 'UPCOMING' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
+						$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
 						$resultPID = mysqli_query($database,$querySetUpcoming);
 					}
 					else{
@@ -225,7 +225,7 @@
 				</p>
 			</form>
 			<br>
-			<a href="Costumer page.html" class="buttonlike">Return to personal page</a>
+			<a href="Costumer page.php" class="buttonlike">Return to personal page</a>
 		</div>
 	</body>
 </html>

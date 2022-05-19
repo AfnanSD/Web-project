@@ -7,21 +7,29 @@
 .previous { grid-area: previous;}
 .contact { 
     grid-area: contact;
-    font-family: "Lucida Console", "Courier New", monospace;
+    /*font-family: "Lucida Console", "Courier New", monospace;*/
     color: rgb(59, 65, 94);
 }
 
 .container {
     display: grid;
     grid-template-areas: 'logo logo logo'
-    'upcoming upcoming profile'
-    'upcoming upcoming add'
-    'requests requests list'
-    'requests requests previous'
+    'upcoming upcoming upcoming'
+    'upcoming upcoming upcoming'
+    'requests requests requests'
+    'requests requests requests'
     'contact contact contact';
     gap: 10px;
 }
+/*
 
+*/
+    /*
+        'upcoming upcoming profile'
+        'upcoming upcoming add'
+        'requests requests list'
+        'requests requests previous'
+    */
 .container div{
     text-align: center;
     background-color: #FAE8E0;
@@ -73,3 +81,6 @@ a:hover{ color: rgb(100, 100, 121);}
 }
 
 h3 { text-align: left;}
+
+
+.error {color: #FF0000;}
