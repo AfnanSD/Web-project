@@ -24,10 +24,6 @@
 			$pass = '';
 			$dbname = 'web_project';
 			$database = mysqli_connect($host,$user,$pass,$dbname);
-			if($database)
-				echo "connected";
-			else
-				echo "NOT connected!";
 		?>
 		<?php 
 			// define variables and set to empty values
@@ -44,25 +40,12 @@
 				  } else {
 					$pet = test_input($_POST["pet"]);
 					$petErr = "";//null?
-					// check if only contains letters and whitespace ... 
-					/*
-					if (!preg_match("/^[a-zA-Z-' ]*$/",$pet)) {
-					  $petErr = "Only letters and white space allowed";
-					}
-					radio button*/
 				  }
 				  
 				  if (empty($_POST["service"])) {
 					$serviceErr = "Service is required";
 				  } else {
 					$service = test_input($_POST["service"]);
-					// check if only contains letters and whitespace
-					/*
-					if (!preg_match("/^[a-zA-Z-' ]*$/",$service)) {
-						$serviceErr = "Only letters and white space allowed";
-					}
-					radio button
-					*/
 				  }
 				  
 				  if (empty($_POST["note"])) {
@@ -91,34 +74,33 @@
 				  }
 			
 				  //submit button clicked and no error
+				  $result2=false;
 				  if (isset($_POST['submit'])) {
 					  if($petErr==null && $serviceErr==null && $apptDayErr==null && $apptimeErr==null){
-						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
+						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service';";// AND STATUS = 'AVAILABLE';
 						$resultAID = mysqli_query($database,$queryAID);
 						$rowAID = mysqli_fetch_assoc($resultAID);
 						$AID = $rowAID['AID'];
-						echo $AID;
+
 						$queryPID = "SELECT `PID` FROM `pet` WHERE `PET_NAME`= '$pet' AND `PET_OWNER_EMAIL`='". $_SESSION['email']."';";
 						$resultPID = mysqli_query($database,$queryPID);
 						$rowPID = mysqli_fetch_assoc($resultPID);
 						$PID = $rowPID['PID'];
-						echo $PID;
-						
-						$_SESSION['email'];
 
+						global $result;
 						$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['email']."','$PID','$AID')";
 						$result = mysqli_query($database,$query);
-						if(mysqli_affected_rows($database)==1){
-							echo "succes"; //change it to alert dialog
-							echo "<script> window.alert('Appointmend added successfully'); </script>";
-							$querySetUpcoming = "UPDATE appointment SET STATUS = 'UPCOMING' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
-							$resultPID = mysqli_query($database,$querySetUpcoming);
-						}
-						else{
-							echo "<script> window.alert('Appointmend added successfully'); </script>";
-							echo "no success";
-						}
-					  }
+						if($result)
+							$result2 = true;
+					}
+					if($result2){
+						echo "<script> window.alert('Appointmend added successfully'); </script>";
+						$querySetUpcoming = "UPDATE appointment SET STATUS = 'UPCOMING' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
+						$resultPID = mysqli_query($database,$querySetUpcoming);
+					}
+					else{
+						echo "<script> window.alert('Appointmend was not added successfully'); </script>";
+					}
 				  }
 			}
 
@@ -146,7 +128,6 @@
 						if(mysqli_num_rows($result)!=0){
 							while($row = mysqli_fetch_assoc($result)) {
 								echo '<label>';
-								//get images from database <img src="checkup.jpg" alt="photo of pet care" height="40px" width="40px">
 								echo '<input type="radio" name="pet" value="' . $row['PET_NAME'].'" ';
 								if (isset($pet) && $pet==$row['PET_NAME']) 
 									echo "checked >" .  $row['PET_NAME'];
@@ -196,7 +177,6 @@
 				<p>
 					<strong>Date:</strong>
 					<span class="error">* <?php echo $apptDayErr;?></span>
-					<!--change this to be based on what the manager put availabale-->
 					<br>
 					<p>
 						<label><input type="date" name="apptDay" value="<?php echo $apptDay;?>"></label>
@@ -207,7 +187,6 @@
 						<span class="error">* <?php echo $apptimeErr;?></span>
 						<br>
 						<label>
-							<!--<select name="apptime">-->
 								<?php
 								//check after specifying
 								if($apptDay == null)
@@ -215,7 +194,7 @@
 								else{
 									$query = "SELECT `TIME` 
 												FROM `appointment` 
-												WHERE DATE = '". $apptDay ."' AND STATUS='AVAILABLE';" ;//check service
+												WHERE DATE = '". $apptDay ."' AND STATUS='AVAILABLE' AND `SERVICE_NAME` = '".$service."';" ;//check service
 									$result = mysqli_query($database,$query);
 										if(mysqli_num_rows($result)!=0){
 											echo '<select name="apptime">';
@@ -233,7 +212,7 @@
 											echo '</select>';
 										}
 										else{
-											echo '<span class="error">* there is not any time available in the date you selected</span>';
+											echo '<span class="error">* there is not any time available in the date you selected or the service</span>';
 										}
 								}
 								?>
@@ -241,7 +220,6 @@
 					</p>
 				</p>
 				<p>
-					<!--<input type="submit" value="Submit">-->
 					<input type="submit" name="submit" value="Submit"> 
 					<input type="reset" value="Reset"><!--delete this?? since it would reset only befor submittng-->
 				</p>
