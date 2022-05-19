@@ -84,7 +84,7 @@
                                         echo '<td>'. $row['NOTE'] .'</td>';
                                         echo '<td>'. $row['DATE'] .'</td>';
                                         echo '<td>'. $row['TIME'] .'</td>';
-                                        echo '<td>'. 'button' .'</td>';
+                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
                                     echo '</tr>';
                                 }
                                 echo'
@@ -116,7 +116,7 @@
                                         <th>Note</th>
                                         <th>Date</th>
                                         <th>Time</th>
-                                        <!--<th>Edit</th>-->
+                                        <th>Edit</th>
                                         <th>Cancel</th>
                                     </tr>
                                 </thead>
@@ -129,7 +129,8 @@
                                         echo '<td>'. $row['NOTE'] .'</td>';
                                         echo '<td>'. $row['DATE'] .'</td>';
                                         echo '<td>'. $row['TIME'] .'</td>';
-                                        echo '<td>'. 'button' .'</td>';
+                                        echo '<td><a href="C Edit an appointment request.php" class="buttonlike">Edit</a></td>';
+                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
                                     echo '</tr>';
                                 }
                                 echo'
@@ -182,6 +183,7 @@
 				<!--our contact info:-->
 				<br>call us directly at : 8001249999
 				<br>or contact us via Email : <a href="mailto:info@FilineFine.com">info@FilineFine.com</a>
+                lfjgkj'l
             </div>
         </div>
     </body>
