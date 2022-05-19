@@ -71,7 +71,6 @@
                                         <th>Note</th>
                                         <th>Date</th>
                                         <th>Time</th>
-                                        <!--<th>Edit</th>-->
                                         <th>Cancel</th>
                                     </tr>
                                 </thead>
@@ -102,7 +101,7 @@
                                         FROM appointment,PET,book_appointment
                                         WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['email']."' AND
                                             book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND `STATUS`= 'REQUESTED';" ;
-
+                                            
                             $result = mysqli_query($database,$query);
                             if(mysqli_num_rows($result)!=0){
                                 echo'
@@ -128,7 +127,8 @@
                                         echo '<td>'. $row['NOTE'] .'</td>';
                                         echo '<td>'. $row['DATE'] .'</td>';
                                         echo '<td>'. $row['TIME'] .'</td>';
-                                        echo '<td><a href="C Edit an appointment request.php" class="buttonlike">Edit</a></td>';
+                                        //echo '<td><a href="C Edit an appointment request.php" class="buttonlike">Edit</a></td>';
+                                        echo '<td><a href="C Edit an appointment request.php?aid='.$row['AID'].'" class="buttonlike">Edit</a></td>';
                                         echo '<td><button value="cancel"><label>Cancel</label></button></td>';
                                     echo '</tr>';
                                 }
@@ -140,38 +140,6 @@
                             else
                                 echo '<p><span class="error">* There are no requested appointments</span></p>';
                         ?>
-                <!--
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>N</th>
-                            <th>Pet</th>
-                            <th>Service</th>
-                            <th>Note</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Edit</th>
-                            <th>Cancel</th>
-                        </tr>
-                    </thead>
-                    <1!-- imaginary -1->
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Lolo</td>
-                            <td>Vaccinations</td>
-                            <td>none</td>
-                            <td>1-3-2022</td>
-                            <td>1:00 to 2:00</td>
-                            <!-1- right? -1->
-                            <td><a href="C Edit an appointment request.html" class="buttonlike">Edit</a></td>
-                            <!-1-<button value="edit"><label>Edit</label></button>-1->
-                            <td><button value="cancel"><label>Cancel</label></button></td>
-                            <!-1-<button value="cancel"><label>Cancel</label></button>-1->
-                        </tr>
-                    </tbody>
-                </table>
-                        -->
                 <br>
                 <a href="C Request an appointment.php" class="buttonlike">Request an appointment</a>
             </div>
@@ -184,7 +152,6 @@
                     $resultphone = mysqli_query($database,$queryphone);
                     $rowphone = mysqli_fetch_assoc($resultphone);
                     $phone = $rowphone['CLINIC_PHONE_NUMBER'];
-
                     echo '<br>call us directly at : '.$phone.'';
                     
                     $query = "SELECT `MANAGER_EMAIL` FROM `clinic_manager`;" ;
