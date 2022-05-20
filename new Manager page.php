@@ -72,17 +72,16 @@
                         <th>Pet ID </th>
                         <th>Appointment ID </th>
                         <th>Pet owner email</th>
-                        <th colspan="3">Status</th>
+                        <th colspan="2">Status</th>
 
                     </tr>
                 </thead>
                 <tbody>';
                   while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
-                        echo '<td>' . $row['PID'] . '</td>';
-                        echo '<td>' . $row['AID'] . '</td>';
+                        echo '<td><a href="#">'. $row['PID'] .'</a></td>';
+                        echo '<td><a href="#">'. $row['AID'] .'</a></td>';
                         echo '<td><a href="mailto:'. $row['PET_OWNER_EMAIL'] .'">'. $row['PET_OWNER_EMAIL'] .'</a></td>';
-                        echo '<td><button value="view"><label>View</label></button></td>';
                         echo '<td><button value="Approave"><label>Approave</label></button></td>';
                         echo '<td><button value="Deny"><label>Deny</label></button></td>'; //?
                         echo '</tr>';
