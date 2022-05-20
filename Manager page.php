@@ -107,6 +107,7 @@
 -->
             </div>
             <div class="requests">
+                <!--change previous to request list?-->
                 <h3>Previous appoitments:</h3>
                 <?php
                         $query = "SELECT AID,SERVICE_NAME,DATE,TIME
