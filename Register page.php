@@ -136,7 +136,7 @@ session_start();
 						$l=$_POST['Lname'];
 						$g=$_POST['gender'];
 						$pfp1=$_POST["pfp"];
-						$_SESSION['se']=$e;
+						$_SESSION['Email']=$e;
 
 						$query ="INSERT INTO pet_owner (OWNER_EMAIL, OWNER_PHONE_NUMBER, OWNER_PASSWORD, FIRST_NAME, LAST_NAME, OWNER_GENDER,OWNER_PHOTO,CLINIC_MANAGER_EMAIL) VALUES('$e',$ph,'$p','$f','$l','$g','$pfp1','MANAGER@GMAIL.COM')";
 						echo  "<script type='text/javascript'> alert('Saved!');</script>";
