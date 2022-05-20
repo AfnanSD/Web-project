@@ -1,166 +1,95 @@
+<!DOCTYPE html>
 <?php  
     session_start();
-	$_SESSION['email'] = 'A@GAMIL.COM';//change this to not overwrite it
-?> 
-<!DOCTYPE html>
+?>  
 <html>
-<!-- View Previous Appointments, current page: PERSONAL-->
-    <head> 
-        <meta charset="utf-8" content="width=device-width, initial-scale=1.0">
-        <title>Personal Page</title>
-        <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
-        <link rel="stylesheet" type="text/css" href="C Grid sheet.css">
-        <?php
-//?
-        $cssFile = "C Grid sheet.css";
-        echo "<link rel='stylesheet' href='" . $cssFile . "'>";
-
-        ?>
-
-        <!--
-        <style>
-			.error {color: #FF0000;}
+ 	<head>
+		<meta charset = "utf-8">
+		<title> LogInPage </title>
+		<link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
+		<style type="text/css">
+			h1 img {position:absolute;
+				float:center;
+				z-index:-1;
+				height:70vh;
+				width:60vh;
+				margin-top:-5vh; 
+				margin-left:-35vh;
+				} 
+			div{margin: 0;
+				margin-left:-70px;
+				height: 50vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 18px;
+				background: url(./background.jpg);
+				background-size: cover;}
+			span input{height:40px;
+					width:250px;
+					margin-top:0px;
+					border-radius:5px;
+					border-style: solid;}
+			a,h1{text-align :center;
+				margin-top:50px;
+				}
+			span h1{ margin-top:80px;}
+			h1,label{color:#4A4E69}
+			body{background-color: #FAE8E0;}
 		</style>
--->
-    </head>
-
-    <body>
-        <?php
-			$host = 'localhost';
-			$user = 'root';
-			$pass = '';
-			$dbname = 'web_project';
-			$database = mysqli_connect($host,$user,$pass,$dbname);
-		?>
-        <!--<a href="PreviousApps.html" class="button">Previous Appointments</a>-->
-        <div class="container">
-            <div class="logo">
-                <img src="logo 1.1.jpg" alt="logo"width="500px" height="170px" >
-                <a href="Felinfine main page.html" class="logoutb" style="float: right;"><img src="logout icon.png" alt="logout icon" height="50" width="50"></a>
-            </div>
-            <!--
-            <div class="profile" id="link"><a href="C Edit profile.html">Edit profile</a></div>
-            <div class="add" id="link"><a href="C Add a pet.html">Add a pet</a></div>
-            <div class="list" id="link"><a href="C View pet list.html"> pet list</a></div>
--->
-            <div class="upcoming">
-                <h3>Upcoming appoitments:</h3>
-                <!--
-                    Status attribute:
-                    Requested
-                    Denied
-                    Upcoming
-                    Cancelled
-                    Previous
-                -->
-                    
-                        <?php
-                            $query = "SELECT appointment.AID,PET_NAME,SERVICE_NAME,NOTE,DATE,TIME
-                                        FROM appointment,PET,book_appointment
-                                        WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['email']."' AND
-                                            book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND `STATUS`= 'UPCOMING';";
-                            $result = mysqli_query($database,$query);
-                            if(mysqli_num_rows($result)!=0){
-                                echo'
-                                <table border="1">
-                                <thead>
-                                    <tr>
-                                        <th>Appointment ID</th><!--N-->
-                                        <th>Pet</th>
-                                        <th>Service</th>
-                                        <th>Note</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Cancel</th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-                                while($row = mysqli_fetch_assoc($result)){
-                                    echo '<tr>';
-                                        echo '<td>'. $row['AID'] .'</td>';
-                                        echo '<td>'. $row['PET_NAME'] .'</td>';
-                                        echo '<td>'. $row['SERVICE_NAME'] .'</td>';
-                                        echo '<td>'. $row['NOTE'] .'</td>';
-                                        echo '<td>'. $row['DATE'] .'</td>';
-                                        echo '<td>'. $row['TIME'] .'</td>';
-                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
-                                    echo '</tr>';
-                                }
-                                echo'
-                                </tbody>
-                                </table>';
-                            }
-                            else
-                                echo '<p><span class="error">* There are no upcoming appointments</span></p>';
-                        ?>
-            </div>
-            <div class="requests">
-                <h3>Your appointements requests:</h3>
-                    <?php
-                            $query = "SELECT appointment.AID,PET_NAME,SERVICE_NAME,NOTE,DATE,TIME
-                                        FROM appointment,PET,book_appointment
-                                        WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['email']."' AND
-                                            book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND `STATUS`= 'REQUESTED';" ;
-
-                            $result = mysqli_query($database,$query);
-                            if(mysqli_num_rows($result)!=0){
-                                echo'
-                                <table border="1">
-                                <thead>
-                                    <tr>
-                                        <th>Appointment ID</th><!--N-->
-                                        <th>Pet</th>
-                                        <th>Service</th>
-                                        <th>Note</th>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Edit</th>
-                                        <th>Cancel</th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-                                while($row = mysqli_fetch_assoc($result)){
-                                    echo '<tr>';
-                                        echo '<td>'. $row['AID'] .'</td>';
-                                        echo '<td>'. $row['PET_NAME'] .'</td>';
-                                        echo '<td>'. $row['SERVICE_NAME'] .'</td>';
-                                        echo '<td>'. $row['NOTE'] .'</td>';
-                                        echo '<td>'. $row['DATE'] .'</td>';
-                                        echo '<td>'. $row['TIME'] .'</td>';
-                                        //echo '<td><a href="C Edit an appointment request.php" class="buttonlike">Edit</a></td>';
-                                        echo '<td><a href="C Edit an appointment request.php?aid='.$row['AID'].'" class="buttonlike">Edit</a></td>';
-                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
-                                    echo '</tr>';
-                                }
-                                echo'
-                                </tbody>
-                                </table>';
-
-                            }
-                            else
-                                echo '<p><span class="error">* There are no requested appointments</span></p>';
-                        ?>
-                <br>
-                <a href="C Request an appointment.php" class="buttonlike">Request an appointment</a>
-            </div>
-            <!--<div class="previous" id="link"><a href="C Previous appointments.html">View previous appointments here</a> </div>-->
-            <div class="contact">
-                <a href="AB0UT US.php">Get to know us!</a> <br>
-                Let us help you
-                <?php
-                    $queryphone = "SELECT `CLINIC_PHONE_NUMBER` FROM `clinic_manager`;" ;
-                    $resultphone = mysqli_query($database,$queryphone);
-                    $rowphone = mysqli_fetch_assoc($resultphone);
-                    $phone = $rowphone['CLINIC_PHONE_NUMBER'];
-                    echo '<br>call us directly at : '.$phone.'';
-                    
-                    $query = "SELECT `MANAGER_EMAIL` FROM `clinic_manager`;" ;
-                    $result = mysqli_query($database,$query);
-                    $row = mysqli_fetch_assoc($result);
-                    $email = $row['MANAGER_EMAIL'];
-                    echo '<br>or contact us via Email : <a href="mailto:'.$email.'">'.$email.'</a>';
-                ?>
-            </div>
-        </div>
-    </body>
+  	</head>
+	<body>		
+		<!--<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">-->
+		<br><br><br>
+		<h1><img src="28181_30881_1.png" alt="logo" height:40vh></h1>
+		<span> <h1 style="margin-left:-90px ">LogIn</h1></span>
+		<div>
+			<label> Enter the user name and the password <label>
+			<form method= "post"  action="Log in page.php"> 
+				<span>
+					<br><input name="Email", placeholder="Email", type="text", size="25", maxlength="30" required><br>
+					<br><input name="password", placeholder="Password", type="password", size="25", maxlength="30" required><br>
+				</span>
+				<p> 
+					<input type="submit", value="Login" name="login">
+					<input type="reset", value="Clear">
+				</p>
+			</form>
+			<br><a href="Register page.php">Create new account<br></a>
+			<br><a href="Restore forgeten password.php">Forgot my password</a>
+		</div>
+  	</body>
 </html>
+<?php  
+	if (!( $database = mysqli_connect( "localhost", "root", "" )))
+	die( "<p>Could not connect to database</p>" );
+
+	if (!mysqli_select_db( $database, "web_project" ))//////database name????
+		die( "<p>Could not open URL database</p>" );
+
+
+	if(isset($_POST['login'])) {  
+		$email=$_POST['Email'];  
+		$password=$_POST['password'];  
+		$query="SELECT * FROM pet_owner WHERE OWNER_EMAIL='$email'AND OWNER_PASSWORD='$password'";  
+		$query2="SELECT * FROM clinic_manager WHERE MANAGER_EMAIL='$email'AND MANAGER_PASSWORD='$password'";
+
+		$run=mysqli_query($database, $query);  
+		$run2=mysqli_query($database,$query2);
+		
+		if($row=mysqli_fetch_row($run)) {  
+			header("location:Costumer page.php");
+			$_SESSION['name']=$row[3];
+			$_SESSION['Email']=$email;
+		}else if($row2=mysqli_fetch_row($run2))
+			{
+				header("location: Manager Page.php");
+				$_SESSION['Email']=$email;
+			}
+		
+		else  
+		echo "<script>alert('Email or password is incorrect!')</script>";  
+	}  
+	mysqli_close($database);	
+?> 
+
