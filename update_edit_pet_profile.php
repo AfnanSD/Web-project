@@ -20,17 +20,8 @@ if(isset($_POST['submit_edit_pet_profile']))
    $pv2=$_POST["pet_Medical_vac"];
    $pmh2=$_POST["pet_Medical_record2"];
 //echo  "UPDATE pet SET PET_NAME='$pn2' ,DATE_OF_BIRTH='$pdb2', PET_GENDER='$pg2',  BREED='$pb2', SPAYED_OR_NEUTERED_STATUS='$ps2',PET_PHOTO='$pp2'  WHERE PID='$pet_id3' ";
-
-  //, MEDICAL_HISTORY='$pmh2' VACCINATIONS_LIST='$pv2'
- $q="UPDATE pet SET PET_NAME='$pn2' ,DATE_OF_BIRTH='$pdb2', PET_GENDER='$pg2',  BREED='$pb2', SPAYED_OR_NEUTERED_STATUS='$ps2',PET_PHOTO='$pp2'  WHERE PID='$pet_id3' ";
+ $q="UPDATE pet SET PET_NAME='$pn2' ,DATE_OF_BIRTH='$pdb2',PET_GENDER='$pg2',  BREED='$pb2', SPAYED_OR_NEUTERED_STATUS='$ps2',PET_PHOTO='$pp2', MEDICAL_HISTORY='$pmh2',VACCINATION_LIST='$pv2' WHERE PID='$pet_id3' ";
   $result=mysqli_query($database,$q);
-
-  $q2="UPDATE pet_medical_history SET MEDICAL_HISTORY='$pmh2' WHERE PID='$pet_id3' ";
-  $result=mysqli_query($database,$q2);
-
-  $q2="UPDATE pet_vaccination_list SET VACCINATION_LIST='$pv2' WHERE PID='$pet_id3' ";
-  $result=mysqli_query($database,$q2);
- 
 mysqli_close($database);
 if($result){
 header("Location: Costumer page.php");
