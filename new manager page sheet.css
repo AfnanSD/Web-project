@@ -9,8 +9,19 @@ footer {
     background-color: #FAE8E0;
     padding: 35px;
     bottom:0;
-    margin-bottom: -20px;
+    margin-bottom: -40px;
 }
+
+body{
+    height: 100%;
+}
+
+a { 
+    text-decoration: none;
+    color: #44475c;
+}
+a:hover{ color: rgb(100, 100, 121);}
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -45,12 +56,10 @@ footer {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-
-}
-
-.tabcontent {
     animation: fadeEffect 1s;
-    /* Fading effect takes 1 second */
+    height: 300px;
+    overflow:scroll;
+    /*max-height: ;*/
 }
 
 /* Go from zero to full opacity */
@@ -77,4 +86,14 @@ table {
 th {
     height: 30px;
     background-color: #DCABB3;
+}
+
+.buttonlike:link, .buttonlike:visited {
+    font: 13px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #333333;
 }
