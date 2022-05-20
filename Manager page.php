@@ -18,7 +18,7 @@
 			$host = 'localhost';
 			$user = 'root';
 			$pass = '';
-			$dbname = 'web_project2';
+			$dbname = 'web_project';//2
 			$database = mysqli_connect($host,$user,$pass,$dbname);
 		?>
         <!--<a href="PreviousApps.html" class="button">Previous Appointments</a>-->
@@ -66,7 +66,7 @@
                 </nav>
             </div>
         -->
-            <div class="upcoming" style="width:136%;">
+            <div class="upcoming" ><!--style="width:136%;"-->
                 <h3>Upcoming appoitments:</h3>
                     <?php
                         $query = "SELECT AID,SERVICE_NAME,DATE,TIME
@@ -127,7 +127,7 @@
                 </table>
 -->
             </div>
-            <div class="requests" style="width:136%;">
+            <div class="requests" ><!--style="width:136%;"-->
                 <!--change previous to request list?-->
                 <h3>Previous appoitments:</h3>
                 <?php
