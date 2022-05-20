@@ -6,7 +6,7 @@ $pass='';
 $dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
-$e22=mysqli_real_escape_string($database,$_SESSION["se"]);
+$e22=mysqli_real_escape_string($database,$_SESSION['Email']);
 
 if(isset($_POST['add_pet_button']))
 { 
