@@ -20,18 +20,11 @@ $result=mysqli_query($database,$q);
     $ps=$row['SPAYED_OR_NEUTERED_STATUS'];
     $pp=$row['PET_PHOTO'];
     $pi=$row['PID'];
+    $pmh=$row['MEDICAL_HISTORY'];
+    $pv=$row['VACCINATION_LIST'];
 
 }
-
-$q = "SELECT * from pet_medical_history WHERE PID='$pet_id' ";
-$result=mysqli_query($database,$q);
- while($row=mysqli_fetch_assoc($result))
-{$pmh=$row['MEDICAL_HISTORY'];}
-
-$q = "SELECT * from pet_vaccination_list WHERE PID='$pet_id' ";
-$result=mysqli_query($database,$q);
- while($row=mysqli_fetch_assoc($result))
-{$pv=$row['VACCINATION_LIST'];}
+mysqli_close($database);
 
  ?>
 <!DOCTYPE html>
@@ -72,8 +65,8 @@ $result=mysqli_query($database,$q);
                                <label >  <option selected>Spayed</option>   </label >
                                    <option>Neutered</option>    
                             </select>  <br><br>
-                            <label > Vaccinated: <textarea name="pet_Medical_vac" value=" <?php echo $pn3;?>"> </textarea>  </label ><br><br>
-                               <label > Medical record: <textarea name="pet_Medical_record2" value=" <?php echo $pn3;?>"> </textarea>  </label ><br><br>
+                            <label > Vaccinated: <textarea name="pet_Medical_vac"> <?php echo $pmh;?></textarea>  </label ><br><br>
+                               <label > Medical record: <textarea name="pet_Medical_record2"><?php echo $pv;?> </textarea>  </label ><br><br>
 
                       
       <input type="submit" value="Submit" name="submit_edit_pet_profile" >
