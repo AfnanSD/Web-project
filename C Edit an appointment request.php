@@ -22,6 +22,122 @@
 			$pass = '';
 			$dbname = 'web_project';
 			$database = mysqli_connect($host,$user,$pass,$dbname);
+
+			$aid = mysqli_real_escape_string($database,$_GET['aid']);//what row to edit?
+		?>
+		<?php 
+
+			//
+			$queryappt = "SELECT TIME, DATE, NOTE, SERVICE_NAME,PET_NAME 
+							FROM appointment,book_appointment,PET 
+							WHERE appointment.AID = '".$aid."' AND '".$aid."'=book_appointment.AID
+							AND book_appointment.PID=PET.PID;";
+			//"SELECT `TIME`, `DATE`, `NOTE`, `SERVICE_NAME` FROM `appointment` WHERE `AID`= '".$aid."';";
+			echo $queryappt;
+			$resultappt = mysqli_query($database,$queryappt);
+			$rowappt = mysqli_fetch_assoc($resultappt);
+			$service = $rowappt['SERVICE_NAME'];
+			$note = $rowappt['NOTE'];
+			$apptDay = $rowappt['DATE'];
+			$apptime = $rowappt['TIME'];
+			$pet = $rowappt['PET_NAME'];//
+			//
+			// define variables and set to empty values
+			
+			$petErr = $serviceErr = $noteErr = $apptDayErr = $apptimeErr = "";
+
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				if (empty($_POST["pet"])) {
+					$petErr = "Pet is required";
+				  } else {
+					$pet = test_input($_POST["pet"]);
+					$petErr = "";
+				  }
+				  
+				  if (empty($_POST["service"])) {
+					$serviceErr = "Service is required";
+				  } else {
+					$service = test_input($_POST["service"]);
+				  }
+				  
+				  if (empty($_POST["note"])) {
+					$note = "";//??
+				  } else {
+					$note = test_input($_POST["note"]);
+					/*
+					// check if only contains letters and whitespace
+					if (!preg_match("/^[a-zA-Z-' ]*$/",$note)) {
+						$noteErr = "Only letters and white space allowed";//already santized??
+					}*/
+				  }
+				
+				  if (empty($_POST["apptDay"])) {
+					$apptDay = "";//?
+					$apptDayErr = "Date is required";
+				  } else {
+					$apptDay = test_input($_POST["apptDay"]);
+				  }
+			
+				  if (empty($_POST["apptime"])) {
+					$apptime = "";//?
+					$apptimeErr = "Time is required";
+				  } else {
+					$apptime = test_input($_POST["apptime"]);
+				  }
+			
+				  //submit button clicked and no error
+				  $result2=false;
+				  if (isset($_POST['submit'])) {
+					  if($petErr==null && $serviceErr==null && $apptDayErr==null && $apptimeErr==null){
+						  /*
+						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service';";// AND STATUS = 'AVAILABLE';
+						$resultAID = mysqli_query($database,$queryAID);
+						$rowAID = mysqli_fetch_assoc($resultAID);
+						$AID = $rowAID['AID'];
+
+						$queryPID = "SELECT `PID` FROM `pet` WHERE `PET_NAME`= '$pet' AND `PET_OWNER_EMAIL`='". $_SESSION['email']."';";
+						$resultPID = mysqli_query($database,$queryPID);
+						$rowPID = mysqli_fetch_assoc($resultPID);
+						$PID = $rowPID['PID'];
+						
+						already have them
+						*/
+						global $result;
+
+						//needed??
+						//$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['email']."','$PID','$AID')";
+						$querySetUpcoming = "UPDATE appointment 
+											SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
+											AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
+											WHERE AID = '".$aid."';";//??
+						echo $querySetUpcoming;
+						//$result = mysqli_query($database,$querySetUpcoming);//
+						if($result)
+							$result2 = true;
+					}
+					if($result2){
+						echo "<script> window.alert('Appointmend added successfully'); </script>";
+						//$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
+						/*
+						$querySetUpcoming = "UPDATE appointment 
+											SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
+											AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
+											WHERE AID = '".$aid."';";//??
+						$resultPID = mysqli_query($database,$querySetUpcoming);
+						*/
+					}
+					else{
+						echo "<script> window.alert('Appointmend was not added successfully'); </script>";
+					}
+				  }
+			}
+
+			function test_input($data) {
+			$data = trim($data);
+			$data = stripslashes($data);
+			$data = htmlspecialchars($data);
+			return $data;
+			}	
 		?>
 		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
 
@@ -84,8 +200,10 @@
 					<!--change this to make text disappear once clicked-->
 					<br>
 					<!--something wrong with value always suggested-->
-					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>">Any extra information you want to tell us about..
+					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>">
+					
 					</textarea>
+					<!--Any extra information you want to tell us about..-->
 				</p>
 				<p>
 					<strong>Date:</strong>
@@ -137,85 +255,7 @@
 					<input type="reset" value="Reset"><!--delete this?? since it would reset only befor submittng-->
 				</p>
 			</form>
-			<!--
-			<form method="post" action="#">
-				<p>
-					<strong>Pet:</strong>
-					<br>
-					<label>
-						<input type="radio" name="pet" value="jacki">Jacki
-					</label>
-					<label>
-						<input type="radio" name="pet" value="lolo">Lolo
-					</label>
-					<label>
-						<input type="radio" name="pet" value="mocha">Mocha
-					</label>
-				</p>
-				<p>
-					<strong>Service:</strong>
-					<br>
-					<label>
-						<img src="checkup.jpg" alt="photo of pet care" height="40px" width="40px">
-						<input type="radio" name="service" value="emergency care">Emergency care
-					</label>
-					<br>
-					<label>
-						<img src="groomingpic.jpg" alt="clinicla examination" height="40px" width="40px">
-						<input type="radio" name="service" value="general periodic clinical examination">General periodic clinical examination
-					</label>
-					<br>
-					<label>
-						<img src="vaccination.jpg" alt="clinicla examination" height="40px" width="40px">
-						<input type="radio" name="service" value="vaccinations">Vaccinations
-						
-					</label>
-					<br>
-					<label>
-						<img src="groomingpic.jpg" alt="clinicla examination" height="40px" width="40px">
-						<input type="radio" name="service" value="treat wounds">Treat wounds
-					
-					</label>
-					<br>
-					<label>
-						<img src="blood.jpg" alt="clinicla examination" height="40px" width="40px">
-						<input type="radio" name="service" value="blood tests">Blood tests
-					</label>
-					<br>
-					<label>
-						<img src="dental.jpg" alt="clinicla examination" height="30px" width="30px">
-						<input type="radio" name="service" value="dental care">Dental care
-					</label>
-					<br>
-					<label>
-						<img src="other.jpg" alt="clinicla examination" height="30px" width="30px">
-						<input type="radio" name="service" value="other">Other
-					</label>
-				</p>
-				<p>
-					<strong>Note:</strong>
-					<br>
-					<textarea name="note" rows="3" cols="40">Any extra information you want to tell us about..
-					</textarea>
-				</p>
-				<p>
-					<strong>Date:</strong>
-					<p>
-						<label>Day: <input type="date" name="apptDay"></label>
-					</p>
-			
-					<p>
-						<label>Time:
-							<input type="time" name="apptime">
-						</label>
-					</p>
-				<p>
-					<input type="submit" value="Submit">
-					<input type="reset" value="Reset">
-				</p>
-			</form>
--->
-			<a href="Costumer page.html" class="buttonlike">Return to personal page</a>
+			<a href="Costumer page.php" class="buttonlike">Return to personal page</a>
 
 		</div>
 	</body>

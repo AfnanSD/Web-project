@@ -7,7 +7,7 @@
 .previous { grid-area: previous;}
 .contact { 
     grid-area: contact;
-    font-family: "Lucida Console", "Courier New", monospace;
+    /*font-family: "Lucida Console", "Courier New", monospace;*/
     color: rgb(59, 65, 94);
 }
 
@@ -20,11 +20,20 @@
     'requests previous'
     'contact contact';*/
     grid-template-areas: 'logo logo logo'
+    'upcoming upcoming upcoming'
+    'upcoming upcoming upcoming'
+    'requests requests requests'
+    'requests requests requests'
+    'contact contact contact';
+    /*
+    'logo logo logo'
     'upcoming upcoming profile'
     'upcoming upcoming add'
     'requests requests list'
     'requests requests previous'
     'contact contact contact';
+    */
+
     gap: 10px;
 }
 
@@ -87,3 +96,5 @@ li {
 
 
 h3 { text-align: left;}
+
+.error {color: #FF0000;}

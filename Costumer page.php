@@ -11,7 +11,7 @@
         <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
         <link rel="stylesheet" type="text/css" href="C Grid sheet.css">
         <?php
-
+//?
         $cssFile = "C Grid sheet.css";
         echo "<link rel='stylesheet' href='" . $cssFile . "'>";
 
@@ -101,7 +101,7 @@
                                         FROM appointment,PET,book_appointment
                                         WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['email']."' AND
                                             book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND `STATUS`= 'REQUESTED';" ;
-                                            
+
                             $result = mysqli_query($database,$query);
                             if(mysqli_num_rows($result)!=0){
                                 echo'
