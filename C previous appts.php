@@ -45,10 +45,7 @@
 
             //---------------------------------------------------------------------------------------
             if(mysqli_num_rows($result)!=0){
-<<<<<<< Updated upstream
-                echo "1";
-=======
->>>>>>> Stashed changes
+
                 echo'
                 <table border="1" align="center" style="width: 100%;">
                 <tr style="background-color: #faebd7; color: #695e59 ;">
