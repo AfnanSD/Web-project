@@ -40,7 +40,7 @@
             echo "<td>" . $row['REVIEW'] . "</td>";
             echo "<td>" . $row['NOTE'] . "</td>";
             echo "<td>" . $row['SERVICE_NAME'] . "</td>";
-            echo "<td> <a href='C edit appt review.php?edit=".$row['AID']."'> <img src='edit.jpg' alt='edit icon'height='15' width='15' ></a></td>";
+            echo "<td> <a href='C edit appt review.php?edetail=".$row['AID']."'> <img src='edit.jpg' alt='edit icon'height='15' width='15' ></a></td>";
             echo "</tr>";}
         ?>
 </tbody> 

@@ -4,15 +4,6 @@
         header("Location: Log in page.php?error=Please Sign In again!");
     }
 ?>
-  <?php
-            $database = mysqli_connect("localhost", "root", "", "web_project");
-            if(!empty($_GET)){
-                $aid = mysqli_real_escape_string($database,$_GET['edit']);
-            $_SESSION['editapptrev'] = $aid;
-        }
-        $aid = $_SESSION['editapptrev'];
-
-        ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,24 +15,28 @@
 	<body>
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
 <div>
-    <table border="1" align="center" style="width: 85%; text-align: center;">
-    <tbody><tr>
-<form action="update C review.php" method="POST" enctype="multipart/form-data">   
-<input  type="text" name="CReview"></tr>
-<!-- $aid = $_SESSION['editapptrev']; -->
-    
+<form method="post" action="c editing review req.php">
+
+<!--imagenary values, might link it to the docs database later-->
+<p>
+    <strong>Review:</strong><input  type="text" name="editedreview"><br>
+    <br>
+    <?php
+
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $dbname = 'web_project';
+    $database = mysqli_connect($host,$user,$pass,$dbname);
+
+    if(!empty($_GET)){
+        $aid = mysqli_real_escape_string($database,$_GET['edetail']);
+        $_SESSION['reviewuseredit'] = $aid;
+    }
+
+    ?>
+
+<input type="submit" value="Submit"> <br>
 </form>
-</tbody> 
-<thead>
-  <tr style="background-color: #faebd7;">
-
-        <th>Review</th>
-	</tr>
-
-</thead>
-
-              </table><br>
-              <a href="Costumer page.html" class="buttonlike">Return to personal page</a>
-              <button value="submit" name="submit"> Edit </button>
 		</div>
  </body></html>
