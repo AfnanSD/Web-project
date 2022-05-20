@@ -6,7 +6,7 @@ $pass='';
 $dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
-$pet_id2=mysqli_real_escape_string($database,$_GET['edit']);
+ $pet_id2=mysqli_real_escape_string($database,$_GET['edit']);
  $pet_id=$_GET['edit'];
  
 $q = "SELECT * from pet WHERE PID='$pet_id' ";
@@ -43,23 +43,22 @@ mysqli_close($database);
 }     
    </style>
  </head>
-
-<body>
-<span style="background-color:white;">
-<table style="margin-top: -9px; margin-left :-7px; width: 105%; border-collapse:collapse; background-color:white" >
+ <span style="background-color:white;">
+<table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
                     <tr>
                         <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
                         <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
                         <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
-                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="#"> Services</a></td>
-                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
-                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
+                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.php">View previous appointments</a></td>
+                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
                         <th>Cancel</th>-->
                     </tr>
         </table>
 </span>
+<body>
 <div>
 <h1>Edit pet's profile:</h1>
 		<fieldset>
@@ -80,8 +79,8 @@ mysqli_close($database);
                                <label >  <option selected>Spayed</option>   </label >
                                    <option>Neutered</option>    
                             </select>  <br><br>
-                            <label > Vaccinated: <textarea name="pet_Medical_vac"> <?php echo $pmh;?></textarea>  </label ><br><br>
-                               <label > Medical record: <textarea name="pet_Medical_record2"><?php echo $pv;?> </textarea>  </label ><br><br>
+                            <label > Vaccinated: <textarea style="overflow: scroll;" name="pet_Medical_vac"> <?php echo $pmh;?> </textarea>  </label ><br><br>
+                               <label > Medical record: <textarea style="overflow: scroll;"name="pet_Medical_record2"><?php echo $pv;?> </textarea>  </label ><br><br>
 
                       
       <input type="submit" value="Submit" name="submit_edit_pet_profile" >
@@ -94,4 +93,6 @@ mysqli_close($database);
        </body> 
         </html>
                
+               
+
                
