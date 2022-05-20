@@ -136,19 +136,23 @@ list-style: none;
 
 .BOX-CONTAINOR{
     display:inline-block;
-        animation: floating 2s linear  ;
+    /*animation: floating 2s linear  ;*/
 
  }
 .BOX{
     display:inline-block;
-     background-color:#FAE8E0;
-    height: 250px;
-    width: 200px;
-    padding:3rem 2rem;
-     margin-left:3.5rem;
+     background-color:white;
+    height: 310px;
+    width: 220px;
+    padding:2rem 1rem;
+     margin-left:3rem;
 
     margin-top:0.5rem;
      text-align:center;
+     border: 4px solid #FAE8E0;
+  border-radius: 5px;
+  font-size: 12px;
+
 }
 
 .BOX-CONTAINOR2{
@@ -214,6 +218,7 @@ gap:2rem;}
     font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
     font-size: large;
 }
+
     </style>
     </head>
 
@@ -249,58 +254,25 @@ gap:2rem;}
         </div>
     <div class="BOX-CONTAINOR">
      <div class="BOX">
-     <h2> service name2<h2>
-     <div>servic detailes</div>
-        </div>
+     <h2> Online_calls <h2>
+     <img class="image33" src="call_online.jpg" alt="service image" height="140" width="165"> 
+     <br>veterinary doctor checking animal medical 
+    <br>treatment and vaccination  with online calls </div>
+
+    <div class="BOX">
+     <h2> Grooming <h2>
+     <img class="image33" src="grooming.jpg" alt="service image" height="140" width="165"> 
+     <br>we are the leader of the grooming servicers by applying 
+     <br>international guidelines in grooming services. </div>
 
       <div class="BOX">
-     <h2> service name2<h2>
-      <div>servic detailes</div>
-     </div>
+     <h2> Sitting <h2>
+     <img class="image33" src="sitting.jpg" alt="service image" height="140" width="165"> 
+     <br>temporarily taking care of your pet for a given time frame. 
+    <br>
+    </div>
 
-      <div class="BOX">
-     <h2> service name2<h2>
-      <div>servic detailes</div>
-        </div>
-
-        <!------------------------------------------------------------------------>
-        <?php
-        $servername = "localhost";
-        //username
-        $username = "root";
-        //empty password
-        $password = "";
-        //database is the database name
-        $dbname = "web_project";
-        
-        // Create connection by passing these connection parameters
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        echo "<br>";
-        echo "<br>";
-        //sql query to display all student_address table based on student id using inner join
-        $sql = "SELECT SERVICE_NAME,SERVICE_PHOTO from clinic_service";
-        $result = $conn->query($sql);
-        //display data on web page
-        while($row = mysqli_fetch_array($result)){
-                echo "<div class='BOX'>";
-                echo "<h2>".$row['service_name']."</h2>";
-                echo "<div>".$row['service_photo']."</div>";
-                echo "</div>";
-        }
-        
-        echo "<br>";
-        
-        
-        
-        
-        //close the connection
-        
-        $conn->close();
-
-        ?>
-
-        <!----------------------------------------------------------------------------->
-        <!-- <a  href="C more services.php" class="bt1">MORE SERVICES -> </a> -->
+        <a  href="C more services.php" class="bt1">MORE SERVICES --></a>
 
         </div>
 
@@ -333,45 +305,25 @@ gap:2rem;}
       <div>reviw detailes</div>
      </div>
 
-      <!------------------------------------------------------------------------>
-      <?php
-        $servername = "localhost";
-        //username
-        $username = "root";
-        //empty password
-        $password = "";
-        //database is the database name
-        $dbname = "web_project";
-        
-        // Create connection by passing these connection parameters
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        echo "<br>";
-        echo "<br>";
-        //sql query to display all student_address table based on student id using inner join
-        $sql = "SELECT review from appointment";
-        $result = $conn->query($sql);
-        //display data on web page
-        while($row = mysqli_fetch_array($result)){
-                echo "<div class='BOX2'>";
-                echo "<h2>".$row['review']."</h2>";
-                echo "</div>";
-                
-        }
-        
-        echo "<br>";
-        
-        
-        
-        
-        //close the connection
-        
-        $conn->close();
+      <div class="BOX2">
+     <h2> review2>
+      <div>servic detailes</div>
+        </div>
+        <br>
+        <br>
+        <div class="BOX2">
+     <h2> review3<h2>
+      <div>reviw detailes</div>
+     </div>
 
-        ?>
+      <div class="BOX2">
+     <h2> review4>
+      <div>servic detailes</div>
+        </div>
 
 
-        <!------------------------------------------------------------------------------->
-        <!-- <a  href="C more review.php" class="bt1">MORE REVIEW -></a> -->
+
+        <a  href="C more review.php" class="bt1">MORE REVIEW --></a>
 
         </div>
  </section>
@@ -395,5 +347,4 @@ gap:2rem;}
     </body>
    
 </html>
-<?php 
-                
+                         
