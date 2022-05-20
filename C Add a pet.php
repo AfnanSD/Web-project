@@ -48,49 +48,19 @@ session_start();
 <br><br>
 <p>For more information about your pet(optional)</p>
         <table border="1">
-            <tr style="background-color: antiquewhite;">
-                <th> Medical record:</th>
-            </tr>              
-        </table> 
-    <br>
-        <button type="button" onclick="addMedical()"> Add a medicla record </button>
-        <script>
-            /*
-            var phpadd= <1?php //name="add_medical_button"
-            //echo add(1,2);?> //call the php add function
-            var phpmult= <1?php //echo mult(1,2);?> //call the php mult function
-            var phpdivide= <1?php //echo divide(1,2);?> //call the php divide function
-            */
-            function addMedical() {
-                //window.prompt(<f?php echo '122';?>);
-                var history = window.prompt("medical history: ");
-                <?php
-                    $history = "<script>document.write(history)</script>"; 
-                    echo $history;
-                    //addHitory($history)
-                ?>
-                //<1?php echo '1';?>>
-            }
-        </script>
-    <br><br>
-        <table border="1">
-            <tr style="background-color: antiquewhite;">
-                <th> Vaccinations list:</th>
-            </tr>              
-        </table> 
-<!--
-        <table border="1">
-            <tr style="background-color: antiquewhite;">
-                <th> Medical record:</th>
-                <th> vaccinated:</th>
-            </tr>
 
-            <tr>
-                <td> <textarea name="add_pet_vac" style="overflow: scroll;"placeholder="Enter vaccination list"></textarea></td>
-                <td> <textarea name="add_pet_medi"  style="overflow: scroll;" placeholder="Enter medical history"></textarea></td> 
-            </tr>                
-        </table> 
--->
+        <tr style="background-color: antiquewhite;">
+                             <th> Medical record:</th>
+                            <th> vaccinated:</th>
+</tr>
+
+<tr>
+       
+         
+        <td> <textarea name="add_pet_vac" style="overflow: scroll;"placeholder="Enter vaccination list"></textarea></td>
+        <td> <textarea name="add_pet_medi"  style="overflow: scroll;" placeholder="Enter medical history"></textarea></td> 
+</tr>                </table> 
+
     
                         
 <BR>
@@ -105,14 +75,4 @@ session_start();
 
 </html>
 
-<?php 
-    function addHitory($h){
-        echo '
-        <script>
-            window.alert('.$h.')
-        </script>
-        ';
-    }
-
-?>
 
