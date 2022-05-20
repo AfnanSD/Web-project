@@ -15,17 +15,20 @@
 
     <table border="1" align="center" style="width: 85%; text-align: center;">
     <tbody>
- <tr>
- 
-  <th> 
+  <?php
+            $database = mysqli_connect("localhost", "root", "", "web_project");
+            $app_id = $_GET['edit'];
 
-    <form method="post" action="appointment.php" >
-        <label><textarea name="textarea 1" rows="5" cols="35" style="overflow: scroll;">Enter notes here</textarea></label>
+        ?>
+
+
+
+
+<form action="update C review.php" method="POST" enctype="multipart/form-data">   
+    <p> Review:<br><input  type="text" name="CReview" value="<?php echo $cReview ;?>"></p>
+    <br><button id="submit100" name="edit_button"> Edit </button>
+    
 </form>
-
-  </th>
-   </tr>
-</tr>
 </tbody> 
 <thead>
   <tr style="background-color: #faebd7;">

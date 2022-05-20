@@ -12,15 +12,8 @@
     <h1>Set available appointments:</h1>
     <hr>
 
-    <?php
-    $link = mysqli_connect("localhost", "root", "", "web_project");
- 
-    // Check connection
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
-    ?>
-    <form method="post" action="appointment.php">
+
+    <form method="post" action="new appointment.php">
 
         <!--imagenary values, might link it to the docs database later-->
         <p>
@@ -30,6 +23,7 @@
                 <input type="radio" name="service" value=" general examination">General periodic clinical examination
             </label>
             <label>
+                
                 <input type="radio" name="service" value="Vaccination">Vaccination
             </label>
             <label>

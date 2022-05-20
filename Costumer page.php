@@ -36,7 +36,7 @@
                         <td width=15.6%><a href="C Add a pet.html"><!--<img height="30" width="30" alt="Add a pet" src="3004543.png">-->Add a pet</a></td>
                         <td width=15.6%><a href="C View pet list.html"><!--<img height="30" width="30" alt="pet list" src="87971.png">-->Pet List</a></td>
                         <td width=15.6%><a href="C Previous appointments.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> Services</a></td>
-                        <td width=15.6%><a href="C Previous appointments.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> View previous appointments</a></td>
+                        <td width=15.6%><a href="C previous appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> View previous appointments</a></td>
                         <td width=10.6%><a href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
