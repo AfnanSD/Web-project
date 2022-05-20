@@ -19,24 +19,36 @@
         <p>
             <strong>Service:</strong>
             <br>
-            <label>
-                <input type="radio" name="service" value=" general examination">General periodic clinical examination
-            </label>
-            <label>
-                
-                <input type="radio" name="service" value="Vaccination">Vaccination
-            </label>
-            <label>
-                <input type="radio" name="service" value="Dental">Dental Care
-            </label>
-            <label>
-                <input type="radio" name="service" value="Blood">Blood tests
-            </label>
-            <label>
-                <input type="radio" name="service" value="wounds">Wound Care
-            </label>
-            <label>
-                <input type="radio" name="service" value="Emergency">Emergency Care
+            <?php
+
+            $host = 'localhost';
+            $user = 'root';
+            $pass = '';
+            $dbname = 'web_project';
+            $database = mysqli_connect($host,$user,$pass,$dbname);
+
+
+                $q = "SELECT SERVICE_NAME FROM clinic_service ";
+
+                $result=mysqli_query($database,$q);
+
+                $nn= mysqli_num_rows($result);
+
+                $N = "";
+
+                if($nn!=0){
+                    while($row=mysqli_row_assoc($result)){
+                        $RR=$row['SERVICE_NAME'];
+                        if($RR !=$N){
+
+                        echo  '<label>
+                        <input type="radio" name="service" value="'.$RR.'">'.$RR.'</label>';
+                    }
+                }
+            
+            }
+            echo "<br>";
+            ?>
 
         <p>
             <label>Day: <input type="date" name="apptDay"></label>
