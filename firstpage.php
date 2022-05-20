@@ -136,19 +136,23 @@ list-style: none;
 
 .BOX-CONTAINOR{
     display:inline-block;
-        animation: floating 2s linear  ;
+    /*animation: floating 2s linear  ;*/
 
  }
 .BOX{
     display:inline-block;
-     background-color:#FAE8E0;
-    height: 250px;
-    width: 200px;
-    padding:3rem 2rem;
-     margin-left:3.5rem;
+     background-color:white;
+    height: 310px;
+    width: 220px;
+    padding:2rem 1rem;
+     margin-left:3rem;
 
     margin-top:0.5rem;
      text-align:center;
+     border: 4px solid #FAE8E0;
+  border-radius: 5px;
+  font-size: 12px;
+
 }
 
 .BOX-CONTAINOR2{
@@ -214,6 +218,7 @@ gap:2rem;}
     font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
     font-size: large;
 }
+
     </style>
     </head>
 
@@ -249,19 +254,24 @@ gap:2rem;}
         </div>
     <div class="BOX-CONTAINOR">
      <div class="BOX">
-     <h2> service name2<h2>
-     <div>servic detailes</div>
-        </div>
+     <h2> Online_calls <h2>
+     <img class="image33" src="call_online.jpg" alt="service image" height="140" width="165"> 
+     <br>veterinary doctor checking animal medical 
+    <br>treatment and vaccination  with online calls </div>
+
+    <div class="BOX">
+     <h2> Grooming <h2>
+     <img class="image33" src="grooming.jpg" alt="service image" height="140" width="165"> 
+     <br>we are the leader of the grooming servicers by applying 
+     <br>international guidelines in grooming services. </div>
 
       <div class="BOX">
-     <h2> service name2<h2>
-      <div>servic detailes</div>
-     </div>
+     <h2> Sitting <h2>
+     <img class="image33" src="sitting.jpg" alt="service image" height="140" width="165"> 
+     <br>temporarily taking care of your pet for a given time frame. 
+    <br>
+    </div>
 
-      <div class="BOX">
-     <h2> service name2<h2>
-      <div>servic detailes</div>
-        </div>
         <a  href="C more services.php" class="bt1">MORE SERVICES --></a>
 
         </div>
@@ -337,5 +347,4 @@ gap:2rem;}
     </body>
    
 </html>
-<?php 
-                
+                         

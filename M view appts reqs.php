@@ -42,7 +42,7 @@
     echo "<br>";
     echo "<br>";
     //sql query to display all student_address table based on student id using inner join
-    $sql = "SELECT date,SERVICE_NAME,review,pid from appointment INNER JOIN book_appointment on appointment.AID=book_appointment.AID";
+    $sql = "SELECT date,SERVICE_NAME,AID,time from appointment INNER JOIN book_appointment on appointment.AID=book_appointment.AID";
     $result = $conn->query($sql);
     //display data on web page
     while($row = mysqli_fetch_array($result)){
@@ -50,7 +50,8 @@
             echo "<tr>";
             echo "<td>" . $row['aid'] . "</td>";
             echo "<td>" . $row['date'] . "</td>";
-            echo "<td>" . $row['service'] . "</td>";
+            echo "<td>" . $row['service_name'] . "</td>";
+            echo "<td>".$row['time']."</td>";
             echo "<td>" . $row['status'] . "</td>";
             //I NEED TO CHANGE THE STATUS ON CLICKING DENY OR APPROVE
             echo "<td><p class='buttonlike' onclick='approve($row['aid'])'>Approve</p></td>";
