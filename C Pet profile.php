@@ -18,17 +18,9 @@ $result=mysqli_query($database,$q);
     $ps=$row['SPAYED_OR_NEUTERED_STATUS'];
     $pp=$row['PET_PHOTO'];
     $pi=$row['PID'];
-
+    $pmh=$row['MEDICAL_HISTORY'];
+    $pv=$row['VACCINATION_LIST'];
 }
-$q = "SELECT * from pet_medical_history WHERE PID='$pet_id' ";
-$result=mysqli_query($database,$q);
- while($row=mysqli_fetch_assoc($result))
-{$pmh=$row['MEDICAL_HISTORY'];}
-
-$q = "SELECT * from pet_vaccination_list WHERE PID='$pet_id' ";
-$result=mysqli_query($database,$q);
- while($row=mysqli_fetch_assoc($result))
-{$pv=$row['VACCINATION_LIST'];}
 
 mysqli_close($database);
 
