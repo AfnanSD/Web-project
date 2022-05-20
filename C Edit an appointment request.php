@@ -26,6 +26,7 @@
 		
 			$aid = mysqli_real_escape_string($database,$_GET['aid']);
 			$aid2 = $aid;
+			//php?aid=$aid2;
 
 			/*
 			if()
@@ -45,7 +46,7 @@
 			//echo $queryappt;
 			$resultappt = mysqli_query($database,$queryappt);
 			$rowappt = mysqli_fetch_assoc($resultappt);
-			$service = $rowappt['SERVICE_NAME'];
+			$service = $rowappt['SERVICE_NAME'] = $_SESSION['service'];
 			$note = $rowappt['NOTE'];
 			$apptDay = $rowappt['DATE'];
 			$apptime = $rowappt['TIME'];
@@ -58,12 +59,12 @@
 			AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
 			WHERE AID = '".$aid2."';";//aid??
 echo $query;*/
-/*
+
 $query = "UPDATE appointment 
 SET TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' AND SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';
 
 Update book_appointment set pid = (SELECT pid FROM pet WHERE pet.PET_NAME = '".$pet."') where aid = '".$aid2."';";
-echo $query;*/
+echo $query;
 
 			//
 			$petErr = $serviceErr = $noteErr = $apptDayErr = $apptimeErr = "";
@@ -80,6 +81,7 @@ echo $query;*/
 					$serviceErr = "Service is required";
 				  } else {
 					$service = test_input($_POST["service"]);
+					$serviceErr='';
 				  }
 				  
 				  if (empty($_POST["note"])) {
@@ -98,6 +100,7 @@ echo $query;*/
 					$apptDayErr = "Date is required";
 				  } else {
 					$apptDay = test_input($_POST["apptDay"]);
+					$apptDayEr='';
 				  }
 			
 				  if (empty($_POST["apptime"])) {
@@ -105,6 +108,7 @@ echo $query;*/
 					$apptimeErr = "Time is required";
 				  } else {
 					$apptime = test_input($_POST["apptime"]);
+					$apptimeErr='';
 				  }
 			
 				  //submit button clicked and no error
