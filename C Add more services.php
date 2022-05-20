@@ -11,6 +11,19 @@
  </head>
 	
         <style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    height: 30px;
+}
+
+a { 
+    text-decoration: none;
+    color: #44475c;
+}
 a:hover{ color: rgb(100, 100, 121);}
 .s_box{
     display:inline-block;
@@ -32,16 +45,15 @@ box-shadow:1px 1px;
 
             </style>
 </head>
-<body>
-    <span style="background-color:white;">
-<table style="margin-top: -9px; margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
+<   <span style="background-color:white;">
+<table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
                     <tr>
                         <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
                         <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
                         <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
-                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="#"> Services</a></td>
-                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
-                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
+                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.php">View previous appointments</a></td>
+                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
                         <th>Cancel</th>-->
@@ -60,7 +72,7 @@ box-shadow:1px 1px;
         $host = "localhost";
          $user = "root";
          $pass = "";
-         $dbname = "web_project2";
+         $dbname = "web_project";
          $database=mysqli_connect($host,$user,$pass,$dbname);
      
 $q = "SELECT * from clinic_service ";
@@ -84,13 +96,10 @@ while($row=mysqli_fetch_assoc($result)){
 mysqli_close($database);
 
  ?>
-  <form action="firstpage.php" method="POST">
-
-  <input type="submit" value=" return to home page">
+ 
   </div>
 
 
-  </form>
 </body>
    
 </html>
