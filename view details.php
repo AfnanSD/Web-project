@@ -11,24 +11,27 @@
    <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
    <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
-    <title>Previous Appoitments</title>
+    <title>Appoitments details</title>
  </head>
 	<body>
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
 <div>
         <h1>Appoitment Details:</h1>
-        <?php
-        $database = mysqli_connect("localhost", "root", "", "web_project");
-        ?>
 		<fieldset>
 			<legend>Details:</legend>
  		<br>
 <table border="1" align="center" style="width: 85%;">
-  <tbody>  
-      <caption style="text-align:left">Previous Details</caption>             
+  <tbody>         
         <?php
 
-            $app_id = $_GET['detail'];
+
+        $database = mysqli_connect("localhost", "root", "", "web_project");
+            if(!empty($_GET)){
+                $aid = mysqli_real_escape_string($database,$_GET['mdetail']);
+                $_SESSION['mviewdetail'] = $aid;
+        }
+            $app_id = $_SESSION['mviewdetail'];
+
             $query = "SELECT * from appointment where aid = '$app_id'";
 
             $result=mysqli_query($database,$query);
@@ -40,7 +43,6 @@
             echo "<td>" . $row['REVIEW'] . "</td>";
             echo "<td>" . $row['NOTE'] . "</td>";
             echo "<td>" . $row['SERVICE_NAME'] . "</td>";
-            echo "<td> <a href='C edit appt review.php?edit=".$row['AID']."'> <img src='edit.jpg' alt='edit icon'height='15' width='15' ></a></td>";
             echo "</tr>";}
         ?>
 </tbody> 
@@ -53,7 +55,6 @@
         <th>REVIEW</th>
         <th>NOTE</th>
         <th>SERVICE</th>
-        <th>EDIT REVIEW</th>
 	</tr>
 
 </thead>

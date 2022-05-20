@@ -17,7 +17,11 @@
                 . mysqli_connect_error());
         }
          
-        // Taking all 5 values from the form data(input)
+         
+        $app_id = $_SESSION["editdetail"];
+        //$sql = "UPDATE appointment SET SERVICE_NAME =".'"$service"'.",DATE = ".'"$apptday"'.",TIME=".'"$apptime"'."where AID = ".'"$_SESSION["editdetail"]"'.";";
+        //$sql1 = "DELETE FROM appointment WHERE AID ="."$app_id".";";
+
         $service =  $_REQUEST['sService'];
         $apptday = $_REQUEST['apptDay'];
         $apptime =  $_REQUEST['apptime'];
@@ -25,10 +29,11 @@
          
         // Performing insert query execution
         // here our table name is college
-        $sql = "INSERT INTO appointment(SERVICE_NAME,DATE,TIME,STATUS)  VALUES ('".$service."','".$apptday."','".$apptime."','".$status."');";
-        echo $sql;
-        
+        //$sql2 = "INSERT INTO appointment(AID,SERVICE_NAME,DATE,TIME,STATUS)  VALUES ('".$app_id."','".$service."','".$apptday."','".$apptime."','".$status."');";
+        $sql = "UPDATE appointment SET SERVICE_NAME ='".$service."', DATE = '".$apptday."',TIME='".$apptime."' WHERE AID = '".$_SESSION["editdetail"]."';";
+
       mysqli_query($database,$sql);
+      //mysqli_query($database,$sql2);
       header("Location: M manage avail appts.php");
       exit();
         // Close connection

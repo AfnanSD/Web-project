@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Set Available Appointments</title>
+    <title>Edit Appointment</title>
     <meta charset="ufc-8" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
     <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
@@ -9,11 +9,11 @@
 
 <body>
     <div>
-    <h1>Set available appointments:</h1>
+    <h1>Edit available appointment:</h1>
     <hr>
 
 
-    <form method="post" action="new appointment.php">
+    <form method="post" action="m editing appointment.php">
 
         <!--imagenary values, might link it to the docs database later-->
         <p>
@@ -26,6 +26,12 @@
             $pass = '';
             $dbname = 'web_project';
             $database = mysqli_connect($host,$user,$pass,$dbname);
+
+            if(!empty($_GET)){
+                $aid = mysqli_real_escape_string($database,$_GET['mdetail']);
+                $_SESSION['meditdetail'] = $aid;
+            }
+            $app_id = $_SESSION['meditdetail'];
 
 
                 $q = "SELECT SERVICE_NAME FROM clinic_service ";

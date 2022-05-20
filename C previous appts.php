@@ -37,16 +37,18 @@
 			$database = mysqli_connect($host,$user,$pass,$dbname);
 
       
-            $query = "SELECT DATE,SERVICE_NAME,PID,AID from appointment, book_appointment WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['Email']."' AND
+            $query = "SELECT DATE,SERVICE_NAME,PID,appointment.AID from appointment, book_appointment WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['Email']."' AND
             book_appointment.AID = appointment.AID AND `STATUS`= 'FINISHED';";
 
             $result = mysqli_query($database,$query);
             //display data on web page
-            echo "3";
 
             //---------------------------------------------------------------------------------------
             if(mysqli_num_rows($result)!=0){
+<<<<<<< Updated upstream
                 echo "1";
+=======
+>>>>>>> Stashed changes
                 echo'
                 <table border="1" align="center" style="width: 100%;">
                 <tr style="background-color: #faebd7; color: #695e59 ;">
@@ -59,7 +61,8 @@
                     echo "<tr>";
                     echo "<td>" . $row['DATE'] . "</td>";
                     echo "<td>" . $row['SERVICE_NAME'] . "</td>";
-                    echo "<td> <a href=C prev appts details.php?detail=".$row['aid']."> Details</a></td>";
+                    $aid = $row['AID'];
+                    echo "<td> <a href='C prev appts details.php?detail=".$aid."'> Details</a></td>";
                     echo "<td>" . $row['PID'] . "</td>";
                     echo "</tr>";
                 }

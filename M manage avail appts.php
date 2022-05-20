@@ -39,9 +39,10 @@
             echo "<td>" . $row['date'] . "</td>";
             echo "<td>" . $row['SERVICE_NAME'] . "</td>";
             echo "<td>".$row['time']."</td>";
-            echo "<td><a href='view details.php?'>VIEW</a>";
-            echo "<td><a href='m del appt.php?'>DELETE</a>";
-            echo "<td><a href='m edit appt.php'>EDIT</a>";
+            $aid = $row['AID'];
+            echo "<td><a href='view details.php?mdetail=".$aid."'>VIEW</a></td>";
+            echo "<td><a href='m del appt.php?mdetail=".$aid."'>DELETE</a></td>";
+            echo "<td><a href='m edit appt.php?mdetail=".$aid."'>EDIT</a></td>";
         //MAYBE THE TYPE INPUT IS UNNEC
         //-----------------------------
             echo "</tr>";
@@ -63,7 +64,7 @@
 </table>
 <br>
 <a href="Manager page.html" class="buttonlike">Return to personal page</a>
-<a href="M Set available appointments.html" class="buttonlike">Set available appointenmts</a>
+<a href="M set available appts.php" class="buttonlike">Set available appointenmts</a>
     </div>
 </body>
 
