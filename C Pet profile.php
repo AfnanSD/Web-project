@@ -5,7 +5,7 @@ $pass='';
 $dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
- /*$pet_id=mysqli_real_escape_string($database,$_GET['view']);
+ $pet_id=mysqli_real_escape_string($database,$_GET['view']);
 $q = "SELECT * from pet WHERE PID='$pet_id' ";
 $result=mysqli_query($database,$q);
 
@@ -20,7 +20,7 @@ $result=mysqli_query($database,$q);
     $pi=$row['PID'];
     $pmh=$row['MEDICAL_HISTORY'];
     $pv=$row['VACCINATION_LIST'];
-}*/
+}
 
 mysqli_close($database);
 
