@@ -262,7 +262,45 @@ gap:2rem;}
      <h2> service name2<h2>
       <div>servic detailes</div>
         </div>
-        <a  href="C more services.php" class="bt1">MORE SERVICES --></a>
+
+        <!------------------------------------------------------------------------>
+        <?php
+        $servername = "localhost";
+        //username
+        $username = "root";
+        //empty password
+        $password = "";
+        //database is the database name
+        $dbname = "web_project";
+        
+        // Create connection by passing these connection parameters
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        echo "<br>";
+        echo "<br>";
+        //sql query to display all student_address table based on student id using inner join
+        $sql = "SELECT SERVICE_NAME,SERVICE_PHOTO from clinic_service";
+        $result = $conn->query($sql);
+        //display data on web page
+        while($row = mysqli_fetch_array($result)){
+                echo "<div class='BOX'>";
+                echo "<h2>".$row['service_name']."</h2>";
+                echo "<div>".$row['service_photo']."</div>";
+                echo "</div>";
+        }
+        
+        echo "<br>";
+        
+        
+        
+        
+        //close the connection
+        
+        $conn->close();
+
+        ?>
+
+        <!----------------------------------------------------------------------------->
+        <!-- <a  href="C more services.php" class="bt1">MORE SERVICES -> </a> -->
 
         </div>
 
@@ -295,25 +333,45 @@ gap:2rem;}
       <div>reviw detailes</div>
      </div>
 
-      <div class="BOX2">
-     <h2> review2>
-      <div>servic detailes</div>
-        </div>
-        <br>
-        <br>
-        <div class="BOX2">
-     <h2> review3<h2>
-      <div>reviw detailes</div>
-     </div>
+      <!------------------------------------------------------------------------>
+      <?php
+        $servername = "localhost";
+        //username
+        $username = "root";
+        //empty password
+        $password = "";
+        //database is the database name
+        $dbname = "web_project";
+        
+        // Create connection by passing these connection parameters
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        echo "<br>";
+        echo "<br>";
+        //sql query to display all student_address table based on student id using inner join
+        $sql = "SELECT review from appointment";
+        $result = $conn->query($sql);
+        //display data on web page
+        while($row = mysqli_fetch_array($result)){
+                echo "<div class='BOX2'>";
+                echo "<h2>".$row['review']."</h2>";
+                echo "</div>";
+                
+        }
+        
+        echo "<br>";
+        
+        
+        
+        
+        //close the connection
+        
+        $conn->close();
 
-      <div class="BOX2">
-     <h2> review4>
-      <div>servic detailes</div>
-        </div>
+        ?>
 
 
-
-        <a  href="C more review.php" class="bt1">MORE REVIEW --></a>
+        <!------------------------------------------------------------------------------->
+        <!-- <a  href="C more review.php" class="bt1">MORE REVIEW -></a> -->
 
         </div>
  </section>
