@@ -54,9 +54,11 @@
                 <p  id="link"><a href="C Previous appointments.html">View previous appointments here</a> </p>
                 <a href="Felinfine main page.html" class="logoutb" style="float: right;"><img src="logout icon.png" alt="logout icon" height="50" width="50"></a>-->
             </div>
-            <div class="upcoming"  style="width:153%;">
+            <div class="upcoming"  >
                 <h3>Upcoming appoitments:</h3>
                 <!--
+                    style="width:153%;"
+
                     Status attribute:
                     Requested
                     Denied
@@ -105,7 +107,7 @@
                                 echo '<p><span class="error">* There are no upcoming appointments</span></p>';
                         ?>
             </div>
-            <div class="requests" style="width:153%;">
+            <div class="requests" ><!--style="width:153%;"-->
                 <h3>Your appointements requests:</h3>
                     <?php
                             $query = "SELECT appointment.AID,PET_NAME,SERVICE_NAME,NOTE,DATE,TIME
