@@ -152,6 +152,8 @@ list-style: none;
      border: 4px solid #FAE8E0;
   border-radius: 5px;
   font-size: 12px;
+  box-shadow:1px 1px;
+
 
 }
 
@@ -257,22 +259,22 @@ gap:2rem;}
      <h2> Online_calls <h2>
      <img class="image33" src="call_online.jpg" alt="service image" height="140" width="165"> 
      <br>veterinary doctor checking animal medical 
-    <br>treatment and vaccination  with online calls </div>
+    <br>treatment and vaccination  with online calls.<br> cost=0</div>
 
     <div class="BOX">
      <h2> Grooming <h2>
      <img class="image33" src="grooming.jpg" alt="service image" height="140" width="165"> 
      <br>we are the leader of the grooming servicers by applying 
-     <br>international guidelines in grooming services. </div>
+     <br>international guidelines in grooming services.<br> cost=150SR </div>
 
       <div class="BOX">
      <h2> Sitting <h2>
      <img class="image33" src="sitting.jpg" alt="service image" height="140" width="165"> 
-     <br>temporarily taking care of your pet for a given time frame. 
+     <br>temporarily taking care of your pet for a given time frame.<br> cost=100SR 
     <br>
     </div>
 
-        <a  href="C more services.php" class="bt1">MORE SERVICES --></a>
+        <a  href="Add more services.php" class="bt1">MORE SERVICES --></a>
 
         </div>
 
@@ -301,29 +303,26 @@ gap:2rem;}
  <div class="BOX-CONTAINOR2">
 
       <div class="BOX2">
-     <h2> review1<h2>
-      <div>reviw detailes</div>
+      <div>loved it it was amazing i had the best experince ever all my kids were amazed too ,
+         does worth it? ofc!!<br    ><br> </div>
      </div>
 
       <div class="BOX2">
-     <h2> review2>
-      <div>servic detailes</div>
+      <div>I thoroughly enjoyed my time there<br> one of the best memory yaaaaaaay</div>
         </div>
         <br>
         <br>
         <div class="BOX2">
-     <h2> review3<h2>
-      <div>reviw detailes</div>
+      <div>it was fab</div>
      </div>
 
       <div class="BOX2">
-     <h2> review4>
-      <div>servic detailes</div>
+      <div>[lovedddddddddddd it i highly recommend it i am not jokinnnng ]</div>
         </div>
 
 
 
-        <a  href="C more review.php" class="bt1">MORE REVIEW --></a>
+        <a  href="Add more reviews.php" class="bt1">MORE REVIEW --></a>
 
         </div>
  </section>
