@@ -2,10 +2,10 @@
 $host='localhost';
 $user='root';
 $pass='';
-$dbname="web_project";
+$dbname="web_project2";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
- $pet_id=mysqli_real_escape_string($database,$_GET['view']);
+ /*$pet_id=mysqli_real_escape_string($database,$_GET['view']);
 $q = "SELECT * from pet WHERE PID='$pet_id' ";
 $result=mysqli_query($database,$q);
 
@@ -20,7 +20,7 @@ $result=mysqli_query($database,$q);
     $pi=$row['PID'];
     $pmh=$row['MEDICAL_HISTORY'];
     $pv=$row['VACCINATION_LIST'];
-}
+}*/
 
 mysqli_close($database);
 
@@ -43,7 +43,24 @@ mysqli_close($database);
 
    </style>
  </head>
-<body><div>
+
+<body>
+<span style="background-color:white;">
+<table style="margin-top: -9px; margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
+                    <tr>
+                        <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
+                        <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="#"> Services</a></td>
+                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
+                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
+                        <!--<th>Time</th>
+                        <th>Edit</th>
+                        <th>Cancel</th>-->
+                    </tr>
+        </table>
+</span>
+<div>
 <h1>Your pet's profile:</h1>
 		<fieldset>
 			<legend>Pet's profile</legend>
