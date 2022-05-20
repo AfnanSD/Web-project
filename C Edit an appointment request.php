@@ -14,29 +14,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Edit an appointment request</title>
 		<link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+		<!--<link rel="stylesheet" type="text/css" href="C Grid sheet.css">for menu style ? not white-->
 		<link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
 
 		<style>
 			.error {color: #FF0000;}
+    		a:hover{ color: rgb(100, 100, 121);}
 		</style>
 	</head>
-	<body>    
-		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
-
-		<!--menu?-->
-		<table style="margin-left:10px;">
+	<body>
+				<!--menu?-->
+				<table style="margin-top: -9px;margin-left :-7px; width: 105%; border-collapse:collapse; background-color:white" >
                     <tr>
-                        <td width=20.6%><a href="C Edit profile.html"><!--<img  height="30" width="30" alt="Edit profile" src="<?php echo (($_POST['pfp'])?$_POST['pfp']:"acc.jpg")?>">--></a>My Account</td>
-                        <td width=15.6%><a href="C Add a pet.html"><!--<img height="30" width="30" alt="Add a pet" src="3004543.png">-->Add a pet</a></td>
-                        <td width=15.6%><a href="C View pet list.html"><!--<img height="30" width="30" alt="pet list" src="87971.png">-->Pet List</a></td>
-                        <td width=15.6%><a href="C Previous appointments.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> Services</a></td>
-                        <td width=15.6%><a href="C previous appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> View previous appointments</a></td>
-                        <td width=10.6%><a href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
+                        <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
+                        <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="#"> Services</a></td>
+                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
+                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
                         <th>Cancel</th>-->
                     </tr>
-        </table>
+        		</table>    
+		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
+
 		<?php
 			$host = 'localhost';
 			$user = 'root';

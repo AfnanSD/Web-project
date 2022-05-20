@@ -142,7 +142,8 @@
                                         echo '<td>'. $row['TIME'] .'</td>';
                                         //echo '<td><a href="C Edit an appointment request.php" class="buttonlike">Edit</a></td>';
                                         echo '<td><a href="C Edit an appointment request.php?aid='.$row['AID'].'" class="buttonlike">Edit</a></td>';
-                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
+                                        //echo '<td><button type="button" name="cancel" value="cancel"><label>Cancel</label></button></td>';
+                                        echo '<td><a href="C cancel request.php?aid='.$row['AID'].'" class="buttonlike">Cancel</a></td>';
                                     echo '</tr>';
                                 }
                                 echo'

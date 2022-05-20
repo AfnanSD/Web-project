@@ -1,7 +1,10 @@
 <!--request an appointment by specifying the pet, the service, note, date and time-->
 <?php  
     session_start();
-	$_SESSION['email'] = 'A@GAMIL.COM';//change this to not overwrite it
+    if(!isset($_SESSION['Email'])){
+        header("Location: Log in page.php?error=Please Sign In again!");
+    }
+
 ?> 
 <!DOCTYPE html>
 <html>
@@ -77,18 +80,18 @@
 				  $result2=false;
 				  if (isset($_POST['submit'])) {
 					  if($petErr==null && $serviceErr==null && $apptDayErr==null && $apptimeErr==null){
-						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service';";// AND STATUS = 'AVAILABLE';
+						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";// AND STATUS = 'AVAILABLE';
 						$resultAID = mysqli_query($database,$queryAID);
 						$rowAID = mysqli_fetch_assoc($resultAID);
 						$AID = $rowAID['AID'];
 
-						$queryPID = "SELECT `PID` FROM `pet` WHERE `PET_NAME`= '$pet' AND `PET_OWNER_EMAIL`='". $_SESSION['email']."';";
+						$queryPID = "SELECT `PID` FROM `pet` WHERE `PET_NAME`= '$pet' AND `PET_OWNER_EMAIL`='". $_SESSION['Email']."';";
 						$resultPID = mysqli_query($database,$queryPID);
 						$rowPID = mysqli_fetch_assoc($resultPID);
 						$PID = $rowPID['PID'];
 
 						global $result;
-						$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['email']."','$PID','$AID')";
+						$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['Email']."','$PID','$AID')";
 						$result = mysqli_query($database,$query);
 						if($result)
 							$result2 = true;
@@ -96,8 +99,10 @@
 					if($result2){
 						echo "<script> window.alert('Appointmend added successfully'); </script>";
 						//UPCOMING
-						$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
+						$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED',NOTE = '$note' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
 						$resultPID = mysqli_query($database,$querySetUpcoming);
+						header("Location: Costumer page.php");
+  						exit();
 					}
 					else{
 						echo "<script> window.alert('Appointmend was not added successfully'); </script>";
@@ -124,7 +129,7 @@
 					<br>
 					<?php
 							
-						$query = "SELECT `PET_NAME` FROM `pet` WHERE PET_OWNER_EMAIL = '". $_SESSION['email'] ."';";
+						$query = "SELECT `PET_NAME` FROM `pet` WHERE PET_OWNER_EMAIL = '". $_SESSION['Email'] ."';";
 						$result = mysqli_query($database,$query);
 						if(mysqli_num_rows($result)!=0){
 							while($row = mysqli_fetch_assoc($result)) {
@@ -172,7 +177,7 @@
 					<!--change this to make text disappear once clicked-->
 					<br>
 					<!--something wrong with value always suggested-->
-					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>">Any extra information you want to tell us about..
+					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>">
 					</textarea>
 				</p>
 				<p>
