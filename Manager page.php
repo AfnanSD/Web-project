@@ -5,6 +5,12 @@
         <title>Manager Profile</title>
         <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
         <link rel="stylesheet" type="text/css" href="M Grid sheet.css">
+
+        <style>
+    
+    td:hover{ color: rgb(100, 100, 121);}
+
+</style>
 </head>
 
 <body>
@@ -12,14 +18,29 @@
 			$host = 'localhost';
 			$user = 'root';
 			$pass = '';
-			$dbname = 'web_project';
+			$dbname = 'web_project2';
 			$database = mysqli_connect($host,$user,$pass,$dbname);
 		?>
         <!--<a href="PreviousApps.html" class="button">Previous Appointments</a>-->
+        <span style="background-color:white;">
+<table style="margin-top: -9px;margin: left -7px; width: 105%; border-collapse:collapse; background-color:white" >
+                    <tr>
+                        <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
+                        <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
+                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="#"> Services</a></td>
+                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
+                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
+                        <!--<th>Time</th>
+                        <th>Edit</th>
+                        <th>Cancel</th>-->
+                    </tr>
+        </table>
+</span>
         <div class="container">
         <div class="logo">
             <img src="logo 1.1.jpg" alt="logo" width="500px" height="170px">
-            <a href="Felinfine main page.html" class="logoutb" style="float: right;"><img src="logout icon.png" alt="logout icon" height="50" width="50"></a>
+            <!--<a href="Felinfine main page.html" class="logoutb" style="float: right;"><img src="logout icon.png" alt="logout icon" height="50" width="50"></a>-->
         </div>
         <!--
         <div class="profile"  id="link">
@@ -45,7 +66,7 @@
                 </nav>
             </div>
         -->
-            <div class="upcoming">
+            <div class="upcoming" style="width:136%;">
                 <h3>Upcoming appoitments:</h3>
                     <?php
                         $query = "SELECT AID,SERVICE_NAME,DATE,TIME
@@ -106,7 +127,7 @@
                 </table>
 -->
             </div>
-            <div class="requests">
+            <div class="requests" style="width:136%;">
                 <!--change previous to request list?-->
                 <h3>Previous appoitments:</h3>
                 <?php
