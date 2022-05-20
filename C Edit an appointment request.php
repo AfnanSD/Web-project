@@ -23,7 +23,16 @@
 			$dbname = 'web_project';
 			$database = mysqli_connect($host,$user,$pass,$dbname);
 
-			$aid = mysqli_real_escape_string($database,$_GET['aid']);//what row to edit?
+		
+			$aid = mysqli_real_escape_string($database,$_GET['aid']);
+			$aid2 = $aid;
+
+			/*
+			if()
+				echo $aid;//what row to edit?
+			else
+				echo "00";
+				*/
 		?>
 		<?php 
 
@@ -33,7 +42,7 @@
 							WHERE appointment.AID = '".$aid."' AND '".$aid."'=book_appointment.AID
 							AND book_appointment.PID=PET.PID;";
 			//"SELECT `TIME`, `DATE`, `NOTE`, `SERVICE_NAME` FROM `appointment` WHERE `AID`= '".$aid."';";
-			echo $queryappt;
+			//echo $queryappt;
 			$resultappt = mysqli_query($database,$queryappt);
 			$rowappt = mysqli_fetch_assoc($resultappt);
 			$service = $rowappt['SERVICE_NAME'];
@@ -41,9 +50,22 @@
 			$apptDay = $rowappt['DATE'];
 			$apptime = $rowappt['TIME'];
 			$pet = $rowappt['PET_NAME'];//
-			//
-			// define variables and set to empty values
 			
+			//	trial
+			/*
+					$query = "UPDATE appointment 
+			SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
+			AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
+			WHERE AID = '".$aid2."';";//aid??
+echo $query;*/
+/*
+$query = "UPDATE appointment 
+SET TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' AND SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';
+
+Update book_appointment set pid = (SELECT pid FROM pet WHERE pet.PET_NAME = '".$pet."') where aid = '".$aid2."';";
+echo $query;*/
+
+			//
 			$petErr = $serviceErr = $noteErr = $apptDayErr = $apptimeErr = "";
 
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -106,17 +128,24 @@
 
 						//needed??
 						//$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['email']."','$PID','$AID')";
-						$querySetUpcoming = "UPDATE appointment 
+						/*$query = "UPDATE appointment 
 											SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
 											AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
-											WHERE AID = '".$aid."';";//??
-						echo $querySetUpcoming;
-						//$result = mysqli_query($database,$querySetUpcoming);//
+											WHERE AID = '".$aid2."';";//aid??
+						*/
+						$query = "UPDATE appointment 
+						SET TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' AND SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';
+
+						Update book_appointment set pid = (SELECT pid FROM pet WHERE pet.PET_NAME = '".$pet."') where aid = '".$aid2."';";
+						echo $query;
+						$result = mysqli_query($database,$query);//
 						if($result)
 							$result2 = true;
 					}
 					if($result2){
-						echo "<script> window.alert('Appointmend added successfully'); </script>";
+						echo "<script> window.alert('Appointmend was edited successfully'); </script>";
+						header("Location: Costumer page.php"); /* Redirect browser */
+  						exit();
 						//$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
 						/*
 						$querySetUpcoming = "UPDATE appointment 
@@ -127,7 +156,9 @@
 						*/
 					}
 					else{
-						echo "<script> window.alert('Appointmend was not added successfully'); </script>";
+						echo "<script> window.alert('Appointmend was not edited successfully'); </script>";
+						//header("Location: Costumer page.php"); /* Redirect browser */
+						//exit();
 					}
 				  }
 			}
@@ -227,8 +258,9 @@
 												FROM `appointment` 
 												WHERE DATE = '". $apptDay ."' AND STATUS='AVAILABLE' AND `SERVICE_NAME` = '".$service."';" ;//check service
 									$result = mysqli_query($database,$query);
+									echo '<select name="apptime">';
+									echo '<option value="'. $apptime.'"selected>'.$apptime.'</option>';
 										if(mysqli_num_rows($result)!=0){
-											echo '<select name="apptime">';
 											while($row = mysqli_fetch_assoc($result)){
 												$rowtime = $row['TIME'];
 												echo '<option value="';
@@ -243,6 +275,7 @@
 											echo '</select>';
 										}
 										else{
+											echo '</select>';
 											echo '<span class="error">* there is not any time available in the date you selected or the service</span>';
 										}
 								}
