@@ -25,11 +25,12 @@
         <span style="background-color:white;">
         <table style="margin-left:10px;">
                     <tr>
-                        <td width=20.6%><a href="C Edit profile.html"><!--<img  height="30" width="30" alt="Edit profile" src="<?php echo (($_POST['pfp'])?$_POST['pfp']:"acc.jpg")?>">--></a>My Account</td>
-                        <td width=15.6%><a href="C Add a pet.html"><!--<img height="30" width="30" alt="Add a pet" src="3004543.png">-->Add a pet</a></td>
-                        <td width=15.6%><a href="C View pet list.html"><!--<img height="30" width="30" alt="pet list" src="87971.png">-->Pet List</a></td>
-                        <td width=15.6%><a href="C Previous appointments.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> Services</a></td>
-                        <td width=15.6%><a href="C previous appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> --> View previous appointments</a></td>
+                        <td width=20.6%><a href="AB0UT US.php">View About us</a></td>
+                        <td width=15.6%><a href="M Edit about us.php"><!--<img height="30" width="30" alt="Add a pet" src="3004543.png">-->Edit About us</a></td>
+                        <td width=15.6%><a href="Insert M Add service.php"><!--<img height="30" width="30" alt="pet list" src="87971.png">-->Add service</a></td>
+                        <td width=15.6%><a href="M View appointments request.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->View Requests List</a></td>
+                        <td width=15.6%><a href="M manage avail appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Manage available appointment</a></td>
+                        <td width=15.6%><a href="M set available appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Set available appointement</a></td>
                         <td width=10.6%><a href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
