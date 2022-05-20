@@ -95,6 +95,7 @@
 					}
 					if($result2){
 						echo "<script> window.alert('Appointmend added successfully'); </script>";
+						//UPCOMING
 						$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
 						$resultPID = mysqli_query($database,$querySetUpcoming);
 					}

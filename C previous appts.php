@@ -45,7 +45,7 @@
             echo "3";
 
             //---------------------------------------------------------------------------------------
-            if(mysqli_num_rows($result)>0){
+            if(mysqli_num_rows($result)!=0){
                 echo "1";
                 echo'
                 <table border="1" align="center" style="width: 100%;">

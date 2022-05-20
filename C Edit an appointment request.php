@@ -1,8 +1,12 @@
 <!--Edit his/her appointenmt request-->
 <?php  
     session_start();
-	$_SESSION['email'] = 'A@GAMIL.COM';//change this to not overwrite it
-?> 
+    if(!isset($_SESSION['Email'])){
+        header("Location: Log in page.php?error=Please Sign In again!");
+    }
+
+?>  
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,11 +15,13 @@
 		<title>Edit an appointment request</title>
 		<link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
 		<link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
+
 		<style>
 			.error {color: #FF0000;}
 		</style>
 	</head>
 	<body>    
+		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
 		<?php
 			$host = 'localhost';
 			$user = 'root';
@@ -23,53 +29,37 @@
 			$dbname = 'web_project';
 			$database = mysqli_connect($host,$user,$pass,$dbname);
 
-		
-			$aid = mysqli_real_escape_string($database,$_GET['aid']);
-			$aid2 = $aid;
-			//php?aid=$aid2;
+			$pet = $service = $note = $apptDay = $apptime = "";
+			
+			if (!empty($_GET)) {
+				$aid = mysqli_real_escape_string($database,$_GET['aid']);
+				$_SESSION['edit_aid'] = $aid;
 
-			/*
-			if()
-				echo $aid;//what row to edit?
-			else
-				echo "00";
-				*/
-		?>
-		<?php 
-
-			//
-			$queryappt = "SELECT TIME, DATE, NOTE, SERVICE_NAME,PET_NAME 
+				$queryappt = "SELECT TIME, DATE, NOTE, SERVICE_NAME,PET_NAME 
 							FROM appointment,book_appointment,PET 
 							WHERE appointment.AID = '".$aid."' AND '".$aid."'=book_appointment.AID
 							AND book_appointment.PID=PET.PID;";
-			//"SELECT `TIME`, `DATE`, `NOTE`, `SERVICE_NAME` FROM `appointment` WHERE `AID`= '".$aid."';";
-			//echo $queryappt;
+
 			$resultappt = mysqli_query($database,$queryappt);
 			$rowappt = mysqli_fetch_assoc($resultappt);
-			$service = $rowappt['SERVICE_NAME'] = $_SESSION['service'];
+
+			global $pet , $service , $note , $apptDay , $apptime;
+
+			$service = $rowappt['SERVICE_NAME'];
 			$note = $rowappt['NOTE'];
 			$apptDay = $rowappt['DATE'];
 			$apptime = $rowappt['TIME'];
-			$pet = $rowappt['PET_NAME'];//
-			
-			//	trial
-			/*
-					$query = "UPDATE appointment 
-			SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
-			AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
-			WHERE AID = '".$aid2."';";//aid??
-echo $query;*/
+			$pet = $rowappt['PET_NAME'];
 
-$query = "UPDATE appointment 
-SET TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' AND SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';
+			}
+			$aid2 = $_SESSION['edit_aid'];
+		?>
+		<?php  
+			$apptDayErr = $apptimeErr = "";
 
-Update book_appointment set pid = (SELECT pid FROM pet WHERE pet.PET_NAME = '".$pet."') where aid = '".$aid2."';";
-echo $query;
-
-			//
-			$petErr = $serviceErr = $noteErr = $apptDayErr = $apptimeErr = "";
 
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 				if (empty($_POST["pet"])) {
 					$petErr = "Pet is required";
 				  } else {
@@ -81,113 +71,76 @@ echo $query;
 					$serviceErr = "Service is required";
 				  } else {
 					$service = test_input($_POST["service"]);
-					$serviceErr='';
 				  }
 				  
 				  if (empty($_POST["note"])) {
-					$note = "";//??
+					$note = "";
 				  } else {
 					$note = test_input($_POST["note"]);
-					/*
-					// check if only contains letters and whitespace
-					if (!preg_match("/^[a-zA-Z-' ]*$/",$note)) {
-						$noteErr = "Only letters and white space allowed";//already santized??
-					}*/
 				  }
-				
+
 				  if (empty($_POST["apptDay"])) {
-					$apptDay = "";//?
+					$apptDay = "";
 					$apptDayErr = "Date is required";
 				  } else {
 					$apptDay = test_input($_POST["apptDay"]);
-					$apptDayEr='';
 				  }
 			
 				  if (empty($_POST["apptime"])) {
-					$apptime = "";//?
+					$apptime = "";
 					$apptimeErr = "Time is required";
 				  } else {
 					$apptime = test_input($_POST["apptime"]);
-					$apptimeErr='';
 				  }
 			
 				  //submit button clicked and no error
 				  $result2=false;
 				  if (isset($_POST['submit'])) {
-					  if($petErr==null && $serviceErr==null && $apptDayErr==null && $apptimeErr==null){
-						  /*
-						$queryAID = "SELECT AID FROM appointment WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service';";// AND STATUS = 'AVAILABLE';
-						$resultAID = mysqli_query($database,$queryAID);
-						$rowAID = mysqli_fetch_assoc($resultAID);
-						$AID = $rowAID['AID'];
+					  if($apptDayErr==null && $apptimeErr==null){
 
-						$queryPID = "SELECT `PID` FROM `pet` WHERE `PET_NAME`= '$pet' AND `PET_OWNER_EMAIL`='". $_SESSION['email']."';";
-						$resultPID = mysqli_query($database,$queryPID);
-						$rowPID = mysqli_fetch_assoc($resultPID);
-						$PID = $rowPID['PID'];
-						
-						already have them
-						*/
-						global $result;
+						$query0 = "SELECT PID FROM pet WHERE PET_NAME = '".$pet."';";
+						$result0 = mysqli_query($database,$query0);
+						$row0 = mysqli_fetch_assoc($result0);
+						$pet0 = $row0['PID'];
 
-						//needed??
-						//$query = "INSERT INTO `book_appointment`(`PET_OWNER_EMAIL`, `PID`, `AID`) VALUES ('".$_SESSION['email']."','$PID','$AID')";
-						/*$query = "UPDATE appointment 
-											SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
-											AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
-											WHERE AID = '".$aid2."';";//aid??
-						*/
-						$query = "UPDATE appointment 
-						SET TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' AND SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';
+						$query = "Update book_appointment set PID = '$pet0' where AID = '".$aid2."';";
+						$result = mysqli_query($database,$query);
 
-						Update book_appointment set pid = (SELECT pid FROM pet WHERE pet.PET_NAME = '".$pet."') where aid = '".$aid2."';";
-						echo $query;
-						$result = mysqli_query($database,$query);//
-						if($result)
-							$result2 = true;
+						$query2 = "UPDATE appointment 
+									SET TIME = '".$apptime."' , DATE = '".$apptDay."' , NOTE = '".$note."' 
+									, SERVICE_NAME = '".$service."' WHERE AID = '".$aid2."';";
+						$result2 = mysqli_query($database,$query2);
+
+						if($result && $result2){
+							header("Location: Costumer page.php");
+  							exit();
+						}
+						else{
+							echo mysqli_error($database);
+							echo "<script> window.alert('Appointmend was not edited successfully'); </script>";
+						}
 					}
-					if($result2){
-						echo "<script> window.alert('Appointmend was edited successfully'); </script>";
-						header("Location: Costumer page.php"); /* Redirect browser */
-  						exit();
-						//$querySetUpcoming = "UPDATE appointment SET STATUS = 'REQUESTED' WHERE TIME = '$apptime' AND DATE = '$apptDay' AND SERVICE_NAME = '$service' AND STATUS = 'AVAILABLE';";
-						/*
-						$querySetUpcoming = "UPDATE appointment 
-											SET  TIME = '".$apptime."' AND DATE = '".$apptDay."' AND NOTE = '".$note."' 
-											AND SERVICE_NAME = '".$service."' AND PET_NAME = '".$pet."'
-											WHERE AID = '".$aid."';";//??
-						$resultPID = mysqli_query($database,$querySetUpcoming);
-						*/
-					}
-					else{
-						echo "<script> window.alert('Appointmend was not edited successfully'); </script>";
-						//header("Location: Costumer page.php"); /* Redirect browser */
-						//exit();
-					}
-				  }
+				}
 			}
 
 			function test_input($data) {
-			$data = trim($data);
-			$data = stripslashes($data);
-			$data = htmlspecialchars($data);
-			return $data;
-			}	
+				$data = trim($data);
+				$data = stripslashes($data);
+				$data = htmlspecialchars($data);
+				return $data;
+				}	
 		?>
-		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
-
 		<div>
-			<!--enough??-->
-			<h1>Edit an appointment request111111111</h1>
-			<p><span class="error">* required field</span></p>
+
+			<h1>Edit an appointment request</h1>
 			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
 				<p>
 					<strong>Pet:</strong>
-					<span class="error">* <?php echo $petErr;?></span>
 					<br>
 					<?php
 							
-						$query = "SELECT `PET_NAME` FROM `pet` WHERE PET_OWNER_EMAIL = '". $_SESSION['email'] ."';";
+						$query = "SELECT `PET_NAME` FROM `pet` WHERE PET_OWNER_EMAIL = '". $_SESSION['Email']."';";
 						$result = mysqli_query($database,$query);
 						if(mysqli_num_rows($result)!=0){
 							while($row = mysqli_fetch_assoc($result)) {
@@ -201,22 +154,20 @@ echo $query;
 							}
 						}
 						else{
-							echo '<span class="error">* there are no pets</span>';//test this?
+							echo '<span class="error">* there are no pets</span>';
 						}
 					?>
 				</p>
+
 				<p>
 					<strong>Service:</strong>
-					<span class="error">* <?php echo $serviceErr;?></span>
 					<br>
-					<?php
-							
+					<?php	
 						$query = "SELECT `SERVICE_NAME` FROM `clinic_service`";
 						$result = mysqli_query($database,$query);
 						if(mysqli_num_rows($result)!=0){
 							while($row = mysqli_fetch_assoc($result)) {
 								echo '<label>';
-								//get images from database <img src="checkup.jpg" alt="photo of pet care" height="40px" width="40px">
 								echo '<input type="radio" name="service" value="' . $row['SERVICE_NAME'].'" ';
 								if (isset($service) && $service==$row['SERVICE_NAME']) 
 									echo "checked >" .  $row['SERVICE_NAME'];
@@ -230,16 +181,13 @@ echo $query;
 						}
 					?>
 				</p>
+		
 				<p>
 					<strong>Note:</strong>
-					<!--change this to make text disappear once clicked-->
 					<br>
-					<!--something wrong with value always suggested-->
-					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>">
-					
-					</textarea>
-					<!--Any extra information you want to tell us about..-->
+					<textarea name="note" rows="3" cols="40" value="<?php echo $note;?>"></textarea>
 				</p>
+
 				<p>
 					<strong>Date:</strong>
 					<span class="error">* <?php echo $apptDayErr;?></span>
@@ -265,6 +213,7 @@ echo $query;
 									echo '<select name="apptime">';
 									echo '<option value="'. $apptime.'"selected>'.$apptime.'</option>';
 										if(mysqli_num_rows($result)!=0){
+											echo '<select name="apptime">';
 											while($row = mysqli_fetch_assoc($result)){
 												$rowtime = $row['TIME'];
 												echo '<option value="';
@@ -279,7 +228,6 @@ echo $query;
 											echo '</select>';
 										}
 										else{
-											echo '</select>';
 											echo '<span class="error">* there is not any time available in the date you selected or the service</span>';
 										}
 								}
@@ -287,9 +235,11 @@ echo $query;
 						</label>
 					</p>
 				</p>
+				<br>
+				<br>
 				<p>
 					<input type="submit" name="submit" value="Submit"> 
-					<input type="reset" value="Reset"><!--delete this?? since it would reset only befor submittng-->
+					<input type="reset" value="Reset">
 				</p>
 			</form>
 			<a href="Costumer page.php" class="buttonlike">Return to personal page</a>
