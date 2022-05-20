@@ -2,7 +2,7 @@
 $host='localhost';
 $user='root';
 $pass='';
-$dbname="web_project2";
+$dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
  /*$pet_id=mysqli_real_escape_string($database,$_GET['view']);
