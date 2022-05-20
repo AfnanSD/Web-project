@@ -73,5 +73,4 @@ else echo "<p>THERE IS NO PETS</p>";
               </table><br>
               <a style="margin-left: 10% ;" href="C Add a pet.php" class="buttonlike">Add a pet</a>
               		</fieldset></div>
- </body></html>
-
+	</body></html>
