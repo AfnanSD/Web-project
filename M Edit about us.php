@@ -3,7 +3,7 @@
 $host='localhost';
 $user='root';
 $pass='';
-$dbname="web_project2";
+$dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
  
 $q = "SELECT * from clinic_manager";
@@ -16,12 +16,12 @@ while($row=mysqli_fetch_assoc($result))
     $ph=$row['CLINIC_PHONE_NUMBER'];
     $em=$row['CLINIC_EMAIL'];
 }
-$q2 = "SELECT CLINIC_PICTURE2 from CLINIC_PICTURE";
+$q2 = "SELECT PICTURES from clinic_pictures";
 $result=mysqli_query($database,$q2);
 
 while($row=mysqli_fetch_assoc($result))
 {
-    $cp=$row['CLINIC_PICTURE2'];
+    $cp=$row['PICTURES'];
 }
 mysqli_close($database);?>
 
@@ -47,7 +47,7 @@ mysqli_close($database);?>
     <p>Picture:<br>
   <img src="<?php echo $cp;?>" alt="our store" height="190"	width="190"	> <br>
 change pictures to:
-    <input  type="file" name="PIC_CLINIC" multiple ></p> 
+    <input  type="file" name="PIC_CLINIC" multiple accept="image/*"></p> 
     <br><button id="submit100" name="update_button"> Edit </button>
     
 </form></div> 
