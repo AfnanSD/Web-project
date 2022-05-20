@@ -17,10 +17,10 @@
 $host='localhost';
 $user='root';
 $pass='';
-$dbname="web_project2";
+$dbname="web_project";
 //$QQ="INSERT INTO CLINIC_INFO "."( PIC,LOC,DES,PHONE,EMAIL) "."VALUES (1,'DD','DD',05,'EMAILIY')";
-
 $database=mysqli_connect($host,$user,$pass,$dbname);
+
 print("<h3>Brife description about us:</h3>");
 $q='SELECT CLINIC_DESCRIPTION FROM clinic_manager';
 $result=mysqli_query($database,$q);
@@ -37,18 +37,17 @@ print("<a href=$key><img src='loc.jpg' alt='our store' height='190'	width='190'	
 
 
  print("<h3>Visit us:</h3>");
-$q3='SELECT * FROM CLINIC_PICTURE';
+$q3='SELECT PICTURES FROM clinic_pictures';
 $result=mysqli_query($database,$q3);
 $nn= mysqli_num_rows($result);
+if($nn!=0){
+while($row=mysqli_fetch_assoc($result)){
+$gg=$row['PICTURES'];
+echo '<img src="'.$gg.'" alt="our store" height="190" width="190">'; 
+}
+}
 
-$row=mysqli_fetch_array($result);
-for ($x = 0; $x < $nn; $x++) {
-	echo  "<img src=$row[$x] alt='our store' height='190' width='190'>"; 
-	  }
 
-
-
- 
 
 //<img src="pet_store3.jpg" alt="our store" height="190"	width="190"	> 
  
@@ -77,6 +76,4 @@ mysqli_close($database);
 		</div>
 	</body>
 </html>
-
-
 
