@@ -1,5 +1,9 @@
 <?php 
 session_start();
+ if(!isset($_SESSION['Email'])){
+        header("Location: Log in page.php?error=Please Sign In again!");
+    }
+
 ?> 
 
 
