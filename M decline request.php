@@ -15,11 +15,13 @@
     echo $aid;
 
     $query = "UPDATE `appointment` SET `STATUS`='AVAILABLE'WHERE `AID`='$aid';";//
-	//$query2 = "DELETE FROM `book_appointment` WHERE aid = '$aid';";
+	$query2 = "DELETE FROM `book_appointment` WHERE aid = '$aid';";
 
     
     $result = mysqli_query($database,$query);
-    if($result){
+    $result2 = mysqli_query($database,$query2);//?
+
+    if($result &&  $result2){
         header("Location: Manager page.php");//
         exit();
     }

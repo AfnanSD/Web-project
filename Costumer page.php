@@ -88,7 +88,8 @@
                             $query = "SELECT appointment.AID,PET_NAME,SERVICE_NAME,NOTE,DATE,TIME
                                         FROM appointment,PET,book_appointment
                                         WHERE book_appointment.PET_OWNER_EMAIL='".$_SESSION['Email']."' AND
-                                            book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND `STATUS`= 'UPCOMING';";
+                                            book_appointment.PID=pet.PID AND book_appointment.AID = appointment.AID AND appointment.STATUS= 'UPCOMING';";
+                            
                             $result = mysqli_query($database,$query);
                             if(mysqli_num_rows($result)!=0){
                                 echo'
@@ -101,7 +102,6 @@
                                         <th>Note</th>
                                         <th>Date</th>
                                         <th>Time</th>
-                                        <th>Cancel</th>
                                     </tr>
                                 </thead>
                                 <tbody>';
@@ -113,7 +113,7 @@
                                         echo '<td>'. $row['NOTE'] .'</td>';
                                         echo '<td>'. $row['DATE'] .'</td>';
                                         echo '<td>'. $row['TIME'] .'</td>';
-                                        echo '<td><button value="cancel"><label>Cancel</label></button></td>';
+                                       // echo '<td><button value="cancel"><label>Cancel</label></button></td>';
                                     echo '</tr>';
                                 }
                                 echo'
