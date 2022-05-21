@@ -73,6 +73,8 @@
                         <th>Appointment ID </th>
                         <th>Pet owner email</th>
                         <th colspan="2">Status</th>
+                        
+                        <th>Details</th>
 
                     </tr>
                 </thead>
@@ -84,6 +86,7 @@
                         echo '<td><a href="mailto:'. $row['PET_OWNER_EMAIL'] .'">'. $row['PET_OWNER_EMAIL'] .'</a></td>';
                         echo '<td><button value="Approave"><label>Approave</label></button></td>';
                         echo '<td><button value="Deny"><label>Deny</label></button></td>'; //?
+                        echo "<td><a href='view req details.php?mdetail=".$row['AID']."'>VIEW</a></td>";
                         echo '</tr>';
                     }
                     echo '

@@ -36,8 +36,14 @@
         //$sql = "UPDATE appointment SET SERVICE_NAME ='".$service."', DATE = '".$apptday."',TIME='".$apptime."' WHERE AID = '".$_SESSION["editdetail"]."';";
         $sql = "DELETE FROM appointment WHERE AID ="."$app_id".";";
 
-      mysqli_query($database,$sql);
-      mysqli_query($database,$sql2);
+      
+      //mysqli_query($database,$sql2);
+
+      $AID2=$_SESSION["editdetail"];
+      $sql = "UPDATE appointment SET SERVICE_NAME ='"$service"', DATE ='"$apptday"', TIME='"$apptime"' WHERE AID ='".$AID2."';";
+       mysqli_query($database,$sql);
+
+
       header("Location: M manage avail appts.php");
       exit();
         // Close connection
