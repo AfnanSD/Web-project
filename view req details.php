@@ -44,7 +44,7 @@
             echo "<td>" . $row['NOTE'] . "</td>";
             echo "<td>" . $row['SERVICE_NAME'] . "</td>";
             echo "<td>" . $row['PID']. "</td>";
-            echo "<td>" . $row['PET_OWNER_EMAIL']."</td>";
+            echo "<td><a href='mailto:" . $row['PET_OWNER_EMAIL']."'>".$row['PET_OWNER_EMAIL']."</td>";
             echo "</tr>";}
         ?>
 </tbody> 

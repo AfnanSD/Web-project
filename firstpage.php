@@ -346,7 +346,7 @@ gap:2rem;}
                 $row = mysqli_fetch_assoc($result);
                 echo $row['CLINIC_PHONE_NUMBER'];
                 $email = $row['CLINIC_EMAIL'];
-                echo '<br>Or contact us via Email : <a href="'.$email.'">'.$email.'</a>';
+                echo '<br>Or contact us via Email : <a href="mailto:'.$email.'">'.$email.'</a>';
              ?>
  </div>
 

@@ -19,28 +19,30 @@
             die("ERROR: Could not connect. "
                 . mysqli_connect_error());
         }
-         
-         
-        $app_id = $_SESSION["editdetail"];
-        //$sql = "UPDATE appointment SET SERVICE_NAME =".'"$service"'.",DATE = ".'"$apptday"'.",TIME=".'"$apptime"'."where AID = ".'"$_SESSION["editdetail"]"'.";";
-        //$sql1 = "DELETE FROM appointment WHERE AID ="."$app_id".";";
 
+
+        if(!empty($_GET)){
+          $aid = mysqli_real_escape_string($database,$_GET['mdetail']);
+          $_SESSION['mveditdetail'] = $aid;
+  }
+      $app_id = $_SESSION['mveditdetail'];
+         
+         
+        
+    
         $service =  $_REQUEST['sService'];
         $apptday = $_REQUEST['apptDay'];
         $apptime =  $_REQUEST['apptime'];
         $status = "AVAILABLE";
          
-        // Performing insert query execution
-        // here our table name is college
-        $sql2 = "INSERT INTO appointment(AID,SERVICE_NAME,DATE,TIME,STATUS)  VALUES ('".$app_id."','".$service."','".$apptday."','".$apptime."','".$status."');";
-        //$sql = "UPDATE appointment SET SERVICE_NAME ='".$service."', DATE = '".$apptday."',TIME='".$apptime."' WHERE AID = '".$_SESSION["editdetail"]."';";
-        $sql = "DELETE FROM appointment WHERE AID ="."$app_id".";";
-
       
-      //mysqli_query($database,$sql2);
 
-      $AID2=$_SESSION["editdetail"];
-      $sql = "UPDATE appointment SET SERVICE_NAME ='"$service"', DATE ='"$apptday"', TIME='"$apptime"' WHERE AID ='".$AID2."';";
+
+      $AID2=$_SESSION["meditingdetail"];
+      
+  
+      $sql = 'UPDATE appointment SET SERVICE_NAME ="'.$service.'", DATE ="'.$apptday.'", TIME="'.$apptime.'" WHERE AID ="'.$AID2.'";';
+
        mysqli_query($database,$sql);
 
 
