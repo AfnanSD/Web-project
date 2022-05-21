@@ -11,15 +11,6 @@
  </head>
 	
         <style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    height: 30px;
-}
-
 a { 
     text-decoration: none;
     color: #44475c;
@@ -45,7 +36,7 @@ box-shadow:1px 1px;
 
             </style>
 </head>
-<   <span style="background-color:white;">
+ <span style="background-color:white;">
 <table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
                     <tr>
                         <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
