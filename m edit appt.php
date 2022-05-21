@@ -37,9 +37,9 @@
 
             if(!empty($_GET)){
                 $aid = mysqli_real_escape_string($database,$_GET['mdetail']);
-                $_SESSION['meditdetail'] = $aid;
+                $_SESSION['meditingdetail'] = $aid;
             }
-            $app_id = $_SESSION['meditdetail'];
+            $app_id = $_SESSION['meditingdetail'];
 
 
                 $q = "SELECT SERVICE_NAME FROM clinic_service ";

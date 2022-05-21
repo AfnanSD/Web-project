@@ -38,7 +38,7 @@
       
 
 
-      $AID2=$_SESSION["mveditdetail"];
+      $AID2=$_SESSION["meditingdetail"];
       
   
       $sql = 'UPDATE appointment SET SERVICE_NAME ="'.$service.'", DATE ="'.$apptday.'", TIME="'.$apptime.'" WHERE AID ="'.$AID2.'";';
