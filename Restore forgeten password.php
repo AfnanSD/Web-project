@@ -73,25 +73,32 @@
 		$email=$_POST['Email'];   
 		$query="SELECT OWNER_PASSWORD FROM pet_owner WHERE OWNER_EMAIL='$email'"; 
 		$pass=mysqli_query($database, $query);
-		if(!$pass)
-		{
-			$query2="SELECT MANAGER_PASSWORD FROM clinic_manager WHERE MANAGER_EMAIL='$email'";
-			$pass2=mysqli_query($database, $query2);
-			if(!$pass2)
+		//if(!$pass)
+		//{
+			//$query2="SELECT MANAGER_PASSWORD FROM clinic_manager WHERE MANAGER_EMAIL='$email'";
+			//$pass2=mysqli_query($database, $query2);
+			//if(!$pass2)
+			//{
+				//echo"<center><p> This email adress does not exist !</center></p>";
+			//}
+			//else
+			//{
+				//$row = mysqli_fetch_row($pass2);
+				//echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+			//}
+		//}
+		//else
+		//{
+			$row = mysqli_fetch_row($pass);
+			if(!$row)
 			{
 				echo"<center><p> This email adress does not exist !</center></p>";
 			}
-			else
-			{
-				$row = mysqli_fetch_row($pass2);
-				echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
-			}
-		}
-		else
-		{
-			$row = mysqli_fetch_row($pass);
+			else{
+
 			echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
-		}
+			}
+		//}
 		
 		mysqli_close($database);
 	}
