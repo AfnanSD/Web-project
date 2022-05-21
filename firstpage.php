@@ -331,8 +331,24 @@ gap:2rem;}
  <div class ="c1 contactUs" style = "padding-bottom=0px;">
 
               Let us help you
-			 <br>call us directly at : 8001249999
-				 <br>or contact us via Email : <a href="mailto:info@FilineFine.com">info@FilineFine.com</a> </div>
+			 <br>
+             <?php
+                $host = 'localhost';
+                $user = 'root';
+                $pass = '';
+                $dbname = 'web_project';
+                $database = mysqli_connect($host,$user,$pass,$dbname);
+            
+                //sql query to display all student_address table based on student id using inner join
+                $sql = "SELECT CLINIC_PHONE_NUMBER,CLINIC_EMAIL from clinic_manager;";
+                $result = mysqli_query($database,$sql);
+                echo "Call us directly at: ";
+                $row = mysqli_fetch_assoc($result);
+                echo $row['CLINIC_PHONE_NUMBER'];
+                $email = $row['CLINIC_EMAIL'];
+                echo '<br>Or contact us via Email : <a href="'.$email.'">'.$email.'</a>';
+             ?>
+ </div>
 
                  <div class ="c2 contactUs" style="padding: top 0px;">
                  <br>

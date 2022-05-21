@@ -32,11 +32,12 @@
          
         // Performing insert query execution
         // here our table name is college
-        //$sql2 = "INSERT INTO appointment(AID,SERVICE_NAME,DATE,TIME,STATUS)  VALUES ('".$app_id."','".$service."','".$apptday."','".$apptime."','".$status."');";
-        $sql = "UPDATE appointment SET SERVICE_NAME ='".$service."', DATE = '".$apptday."',TIME='".$apptime."' WHERE AID = '".$_SESSION["editdetail"]."';";
+        $sql2 = "INSERT INTO appointment(AID,SERVICE_NAME,DATE,TIME,STATUS)  VALUES ('".$app_id."','".$service."','".$apptday."','".$apptime."','".$status."');";
+        //$sql = "UPDATE appointment SET SERVICE_NAME ='".$service."', DATE = '".$apptday."',TIME='".$apptime."' WHERE AID = '".$_SESSION["editdetail"]."';";
+        $sql = "DELETE FROM appointment WHERE AID ="."$app_id".";";
 
       mysqli_query($database,$sql);
-      //mysqli_query($database,$sql2);
+      mysqli_query($database,$sql2);
       header("Location: M manage avail appts.php");
       exit();
         // Close connection
