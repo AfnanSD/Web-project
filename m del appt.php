@@ -1,6 +1,13 @@
 <?php
 
-        session_start();      
+          
+         
+        session_start();
+        if(!isset($_SESSION['Email'])){
+            header("Location: Log in page.php?error=Please Sign In again!");
+        }
+    
+      
         // Check connection
         if($database === false){
             die("ERROR: Could not connect. "
