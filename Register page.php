@@ -146,8 +146,10 @@ session_start();
 						if($results){
 							echo "<script>alert('Saved!');</script>";
 							header("location:Costumer page.php?OWNER_EMAIL=<?=$e;?>");
+							$_SESSION['name']=$row[3];
+							$_SESSION['Email']=$email;
 							exit(0);
-						}	
+						}		
 						else
 						{
 							echo "<script>alert('...');</script>";
