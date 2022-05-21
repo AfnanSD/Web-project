@@ -2,12 +2,15 @@
 <html>
 	<head>
    <meta charset="utf-8">
+   
    <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+   
    <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
    <title>Add Service</title>
   </head>
 	<body>
-      <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
+    <a href="Manager page.php" class="logoutb" style="float: right;"><img src="re-pict-house-base.png" alt="HomePage" height="50" width="50" style="align-items:left;"></a>
+      <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage"> 
 
       <div>
 <h1>Add a service</h1>
