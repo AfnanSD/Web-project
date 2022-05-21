@@ -5,12 +5,26 @@ $pass='';
 $dbname="web_project";
 $database=mysqli_connect($host,$user,$pass,$dbname);
 
- $pet_id=mysqli_real_escape_string($database,$_GET['view']);
-$q = "SELECT * from pet WHERE PID='$pet_id' ";
-$result=mysqli_query($database,$q);
+ $pet_id=mysqli_real_escape_string($database,$_GET['viewpet']);
+$q = "SELECT * from pet WHERE PID='$pet_id'; ";
+$vac = "SELECT VACCINATION_LIST from pet_vaccination_list where PID='$pet_id';";
+$history = "SELECT MEDICAL_HISTORY from pet_medical_history where PID='$pet_id';";
 
- while($row=mysqli_fetch_assoc($result))
-{
+
+$result=mysqli_query($database,$q);
+$sres = mysqli_query($database,$vac);
+$tres = mysqli_query($database,$history);
+
+
+
+// SELECT e.ID, e.Name, s.Salary, d.Name
+//FROM (Employee e JOIN Salary s ON e.ID = s.Emp_ID)
+//JOIN Department d ON e.Dep_ID = d.ID
+
+    $row=mysqli_fetch_assoc($result);
+    $his = mysqli_fetch_assoc($tres);
+    $vaci = mysqli_fetch_assoc($sres);
+    
     $pn=$row['PET_NAME'];
     $pdb=$row['DATE_OF_BIRTH'];
     $pg=$row['PET_GENDER'];
@@ -18,9 +32,9 @@ $result=mysqli_query($database,$q);
     $ps=$row['SPAYED_OR_NEUTERED_STATUS'];
     $pp=$row['PET_PHOTO'];
     $pi=$row['PID'];
-    $pmh=$row['MEDICAL_HISTORY'];
-    $pv=$row['VACCINATION_LIST'];
-}
+    $pmh=$his['MEDICAL_HISTORY'];
+    $pv=$vaci['VACCINATION_LIST'];
+
 
 mysqli_close($database);
 
@@ -57,6 +71,7 @@ mysqli_close($database);
                         <td width=14.2%><a href="M manage avail appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Manage available appointment</a></td>
                         <td width=14.2%><a href="M set available appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Set available appointement</a></td>
                         <td width=10.6%><a href="M reviews list.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->View review List</a></td>
+                        <td width=10.6%><a href="Manager page.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Home page</a></td>
                         <td width=0.2%><a href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
