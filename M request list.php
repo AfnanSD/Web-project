@@ -85,7 +85,7 @@
                     <tbody>';
                     while ($row = mysqli_fetch_assoc($result)) {
                             echo '<tr>';
-                            echo '<td><a href="C Pet profile.php?viewpet='.$row["PID"].'>'. $row['PID'] .'</a></td>';
+                            echo '<td><a href="m view pet detail.php?viewpet='.$row["PID"].'">'. $row['PID'] .'</a></td>';
                             echo '<td><a href="#">'. $row['AID'] .'</a></td>';
                             echo '<td><a href="mailto:'. $row['PET_OWNER_EMAIL'] .'">'. $row['PET_OWNER_EMAIL'] .'</a></td>';
                             echo '<td><a href="M accept request.php?aid='.$row['AID'].'" class="buttonlike">Accept</a></td>';
