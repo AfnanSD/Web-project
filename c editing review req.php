@@ -29,7 +29,7 @@
 
       mysqli_query($database,$sql);
       //mysqli_query($database,$sql2);
-      header("Location: C previous appts.php");
+      header("Location: C Previous appointments.php");
       exit();
         // Close connection
     
