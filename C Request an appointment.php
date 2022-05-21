@@ -123,6 +123,10 @@
 						echo "<script> window.alert('Appointmend was not added successfully'); </script>";
 					}
 				  }
+
+				//time
+				else if (isset($_POST['btnSubmit2'])) {
+				} 
 			}
 
 			function test_input($data) {
@@ -242,7 +246,9 @@
 				</p>
 				<p>
 					<input type="submit" name="submit" value="Submit"> 
-					<input type="reset" value="Reset"><!--delete this?? since it would reset only befor submittng-->
+					<!--<input type="reset" value="Reset">delete this?? since it would reset only befor submittng-->
+
+					<input type="submit" name="btnSubmit2" value="check available time">
 				</p>
 			</form>
 			<br>

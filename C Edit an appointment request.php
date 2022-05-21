@@ -256,7 +256,7 @@
 				<br>
 				<p>
 					<input type="submit" name="submit" value="Submit"> 
-					<input type="reset" value="Reset">
+					<!--<input type="reset" value="Reset">-->
 				</p>
 			</form>
 			<a href="Costumer page.php" class="buttonlike">Return to personal page</a>

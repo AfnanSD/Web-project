@@ -32,8 +32,15 @@ $tres = mysqli_query($database,$history);
     $ps=$row['SPAYED_OR_NEUTERED_STATUS'];
     $pp=$row['PET_PHOTO'];
     $pi=$row['PID'];
-    $pmh=$his['MEDICAL_HISTORY'];
-    $pv=$vaci['VACCINATION_LIST'];
+    if(mysqli_num_rows($tres)!=0)
+        $pmh=$his['MEDICAL_HISTORY'];
+    else
+        $pmh='';
+    if(mysqli_num_rows($sres)!=0)
+        $pv=$vaci['MEDICAL_HISTORY'];
+    else
+        $pv='';
+    //$pv=$vaci['VACCINATION_LIST'];
 
 
 mysqli_close($database);
@@ -61,7 +68,7 @@ mysqli_close($database);
 
 <body>
 <span style="background-color:white;">
-        <table style="margin-left:10px;">
+        <table style="margin-left:10px; background-color:white;">
                     <tr>
                         <!--td width=10.2%><a href="AB0UT US.php">View About us</a></td>.. Insert M Add service.php-->
                         <td width=10.2%><a href="Custmeres.php">Contact pet owners</a></td>
