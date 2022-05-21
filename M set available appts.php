@@ -62,7 +62,6 @@
         <input type="submit" value="Submit"> <br>
     </form>
     <br>
-    <a href="Manager page.html" class="buttonlike">Return to personal page</a>
     </div>
 </body>
 </html>
