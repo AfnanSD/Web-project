@@ -1,3 +1,10 @@
+<?php  
+    session_start();
+    if(!isset($_SESSION['Email'])){
+        header("Location: Log in page.php?error=Please Sign In again!");
+    }
+
+?>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +15,8 @@
 </head>
 
 <body>
+<a href="Manager page.php" class="logoutb" style="float: right;"><img src="re-pict-house-base.png" alt="HomePage" height="50" width="50" style="align-items:left;"></a>
+
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
     <div>
     <h1>Manage availabe appointments:</h1>
@@ -63,7 +72,7 @@
 
 </table>
 <br>
-<a href="Manager page.html" class="buttonlike">Return to personal page</a>
+
 <a href="M set available appts.php" class="buttonlike">Set available appointenmts</a>
     </div>
 </body>
