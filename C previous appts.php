@@ -80,7 +80,7 @@ echo "<br>";
 
 
     <br>
-    <a href="Costumer page.html" class="buttonlike">Return to personal page</a>
+    <a href="Costumer page.php" class="buttonlike">Return to personal page</a>
     </div>
 </body>
 </html>
