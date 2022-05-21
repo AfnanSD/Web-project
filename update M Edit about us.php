@@ -27,7 +27,7 @@ $database=mysqli_connect($host,$user,$pass,$dbname);
 
 
 if($result){
-header("Location: M Manger page.php");
+header("Location: Manager page.php");//M Manger page.php
 exit(0);
 }
 ?>

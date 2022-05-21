@@ -124,9 +124,9 @@ session_start();
 					$res_e = mysqli_query($database, $sql_e);
 
 					if (mysqli_num_rows($res_e)  > 0) {
-					echo"<center>Sorry... email address already taken</center>"; 	
+					echo"<center><p>Sorry... email address already taken</p></center>"; 	
 					}else if(mysqli_num_rows($res_u) > 0){
-					echo "<center>Sorry... phone number already taken</center>"; 	
+					echo "<center><p>Sorry... phone number already taken</p></center>"; 	
 					}else
 					{
 						$e=$_POST['email'];
