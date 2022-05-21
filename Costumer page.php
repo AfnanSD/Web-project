@@ -179,7 +179,7 @@
             </div>
             
             <div class="contact">
-                <a href="AB0UT US C.php">Get to know us!</a> <br>
+                <a href="ABOUT US C.php">Get to know us!</a> <br>
                 Let us help you
                 <?php
                     $queryphone = "SELECT `CLINIC_PHONE_NUMBER` FROM `clinic_manager`;" ;
