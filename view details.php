@@ -14,6 +14,7 @@
     <title>Appoitments details</title>
  </head>
 	<body>
+    <a href="M manage avail appts.php" class="logoutb" style="float: right;"><img src="263085.png" alt="manage appts page" height="50" width="50" style="align-items:left;"></a>
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
 <div>
         <h1>Appoitment Details:</h1>
@@ -63,6 +64,6 @@
             <br>
               <br>
               <br>
-              <a href="Costumer page.html" class="buttonlike">Return to personal page</a>
+              
 		</fieldset></div>
  </body></html>
