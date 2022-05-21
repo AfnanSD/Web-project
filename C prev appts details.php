@@ -23,6 +23,7 @@
 								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
 								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
 								<td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.php">View previous appointments</a></td>
+                <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="Costumer page.php">Home page</a></td>
 								<td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="25" width="25"></a></td>
 								<!--<th>Time</th>
 								<th>Edit</th>
