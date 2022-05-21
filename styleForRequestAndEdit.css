@@ -52,3 +52,9 @@ div{
 .availappts td{
     text-align: center;
 }
+
+a { 
+    text-decoration: none;
+    color: #44475c;
+}
+a:hover{ color: rgb(100, 100, 121);}

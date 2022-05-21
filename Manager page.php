@@ -95,6 +95,7 @@
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Details</th>
+                                    <th>Finished</th>
                                 </tr>
                             </thead>
                             <tbody>';
@@ -104,7 +105,9 @@
                                     echo '<td>'. $row['SERVICE_NAME'] .'</td>';
                                     echo '<td>'. $row['DATE'] .'</td>';
                                     echo '<td>'. $row['TIME'] .'</td>';
-                                    echo '<td><button value="view"><label>View</label></button></td>';//?
+                                    //echo '<td><button value="view"><label>View</label></button></td>';//?
+                                    echo "<td><a href='view req details.php?mdetail=".$row['AID']."'class='buttonlike'>VIEW</a></td>";//?
+                                    echo '<td><a href="M finish appointment.php?aid='.$row['AID'].'" class="buttonlike">Finished</a></td>';
                                 echo '</tr>';
                             }
                             echo'
@@ -114,37 +117,14 @@
                         else
                             echo '<p><span class="error">* There are no upcoming appointments</span></p>';
                     ?>
-                <!--
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>N</th>
-                            <th>Service</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <!-s- imaginary -s->
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Vaccinations</td>
-                            <td>1-3-2022</td>
-                            <td>1:00 to 2:00</td>
-                            <td><a href="M Upcoming appointment details.html" class="buttonlike">View</a> </td>
-                        </tr>
-                    </tbody>
-                </table>
--->
+
             </div>
-            <div class="requests"><!--style="width:136%;"-->
-                <!--change previous to request list?-->
+            <div class="requests">
                 <h3>Previous appoitments:</h3>
                 <?php
                         $query = "SELECT AID,SERVICE_NAME,DATE,TIME
                                     FROM appointment
-                                    WHERE STATUS = 'PREVIOUS';";
+                                    WHERE STATUS = 'finished';";
                         
                         $result = mysqli_query($database,$query);
                         if(mysqli_num_rows($result)!=0){
@@ -166,7 +146,8 @@
                                     echo '<td>'. $row['SERVICE_NAME'] .'</td>';
                                     echo '<td>'. $row['DATE'] .'</td>';
                                     echo '<td>'. $row['TIME'] .'</td>';
-                                    echo '<td><button value="view"><label>View</label></button></td>';//?
+                                    //echo '<td><button value="view"><label>View</label></button></td>';//?
+                                    echo "<td><a href='view req details.php?mdetail=".$row['AID']."'class='buttonlike'>VIEW</a></td>";
                                 echo '</tr>';
                             }
                             echo'
