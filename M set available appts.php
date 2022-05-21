@@ -17,7 +17,7 @@
 <body>
 
 <span style="background-color:white;">
-        <table style="margin-left:10px;">
+        <table style="margin-left:10px; background-color:white;">
                     <tr>
                         <!--td width=10.2%><a href="AB0UT US.php">View About us</a></td>.. Insert M Add service.php-->
                         <td width=10.2%><a href="Custmeres.php">Contact pet owners</a></td>

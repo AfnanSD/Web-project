@@ -20,9 +20,8 @@
 
     </head>
     <body>
-    
     <span style="background-color:white;">
-        <table style="margin-left:10px;">
+        <table style="margin-left:10px; background-color:white;">
                     <tr>
                         <!--td width=10.2%><a href="AB0UT US.php">View About us</a></td>.. Insert M Add service.php-->
                         <td width=10.2%><a href="Custmeres.php">Contact pet owners</a></td>
@@ -53,15 +52,17 @@
             $dbname = "web_project";
             $database=mysqli_connect($host,$user,$pass,$dbname);
             
-
+//                
+//
+//<tr>faebd7
             $N=" ";
             $q = "SELECT REVIEW,PET_OWNER_EMAIL FROM appointment,book_appointment WHERE appointment.AID=book_appointment.AID and REVIEW is not null ";
             $result=mysqli_query($database,$q);
             $nn= mysqli_num_rows($result);
             if($nn!=0){
                 echo'
-                <table border="1">
-                <thead>
+                    <table border="1">
+                    <thead>
                     <tr>
                         <th>Pet owner email</th>
                         <th>Review</th>

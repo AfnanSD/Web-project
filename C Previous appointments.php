@@ -12,7 +12,7 @@
     <style>
         td{
             text-align: center;
-            font-weight: bold;
+            /*font-weight: bold;*/
         }
     </style>
 </head>
@@ -34,6 +34,7 @@
 							</tr>
 				</table>
 		</span>
+    
 
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
     <div>
