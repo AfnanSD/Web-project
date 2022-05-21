@@ -27,7 +27,7 @@
       </tr></thead>
       <tbody>
 
-<form action="Add service.php" method="POST" >
+<form action="M Add Service.php" method="POST" >
    <tr>
    <th><input type="text" name="nameofservice" placeholder="write your service's name"required></th>
    <th><textarea name="S_DE" placeholder="write your service's description"required></textarea> </th>
@@ -59,7 +59,7 @@ if(isset($_POST['addsboutton']))
    $S_DE=$_POST["S_DE"];
    //echo $NAME.$S_PHOTO.$PRICE;
 
-$q2="INSERT INTO clinic_service(SERVICE_NAME,SERVICE_PHOTO,SERVICE_DESCRIPTION, SERVICE_PRICE,CLINIC_MANAGER_EMAIL) VALUES('$NAME','$S_PHOTO','$S_DE','$PRICE','MANAGER@GMAIL.COM')";
+$q2="INSERT INTO clinic_service(SERVICE_NAME,SERVICE_PHOTO,SERVICE_DESCRIPTION, SERVICE_PRICE,CLINIC_MANAGER_EMAIL) VALUES('$NAME','$S_PHOTO','$S_DE',$PRICE,'MANAGER@GMAIL.COM')";
 $result=mysqli_query($database,$q2);
 //if($result){
 header("Location:Manager page.php");
