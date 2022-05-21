@@ -1,9 +1,12 @@
 <?php 
 session_start();
+if(!isset($_SESSION['Email'])){
+    header("Location: Log in page.php?error=Please Sign In again!");
+}
 $host='localhost';
 $user='root';
 $pass='';
-$dbname="web_project";
+$dbname='web_project';
 $database=mysqli_connect($host,$user,$pass,$dbname);
 $owner_e2=mysqli_real_escape_string($database,$_SESSION['Email']);
 $q = "SELECT * from pet_owner WHERE OWNER_EMAIL='$owner_e2' ";
@@ -35,20 +38,20 @@ $result=mysqli_query($database,$q);
    <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
  </head>
  <span style="background-color:white;">
-<table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
-                    <tr>
-                        <td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td>
-                        <td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
-                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
-                        <td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
-                        <td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.php">View previous appointments</a></td>
-                        <td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="30" width="30"></a></td>
-                        <!--<th>Time</th>
-                        <th>Edit</th>
-                        <th>Cancel</th>-->
-                    </tr>
-        </table>
-</span>
+		<table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
+							<tr>
+								<td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C profile.php">My Account</a></td><!--C profile.php-->
+								<td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
+								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
+								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
+								<td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C Previous appointments.html">View previous appointments</a></td>
+								<td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="30" width="30"></a></td>
+								<!--<th>Time</th>
+								<th>Edit</th>
+								<th>Cancel</th>-->
+							</tr>
+				</table>
+		</span>
  <body>
     <img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
      <div>
@@ -104,7 +107,7 @@ $result=mysqli_query($database,$q);
     { 
          if(!preg_match('/^[a-z]+$/',$_POST["Fname"])||!preg_match('/^[a-z]+$/',$_POST["Lname"]))
                 {
-                    print("<center><p>You can't write a name using litters only!</p></center>");
+                    print("<center><p>You can write a name using lower case letters only!</p></center>");
                 }else
                 if(!preg_match('/^[0-9]{10}+$/',$_POST["phone"]))
                 {
@@ -113,8 +116,14 @@ $result=mysqli_query($database,$q);
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
                 {
                     print("<center><p>Please enter a valid email address!</p></center>");
-                }
-
+                }else
+                {
+                    $email = $_POST['email'];
+					$sql_e = "SELECT * FROM pet_owner WHERE OWNER_EMAIL='$email'";
+					$res_e = mysqli_query($database, $sql_e);
+                    if (mysqli_num_rows($res_e)  > 0) {
+                        echo"<br><center>Sorry... email address already taken</center>"; 	
+                    }
                 else{
               $of3=$_POST["Fname"];
               $ol3=$_POST["Lname"];
@@ -125,11 +134,12 @@ $result=mysqli_query($database,$q);
               $oph3=$_POST["o_pic"];
               $q="UPDATE pet_owner SET FIRST_NAME='$of3',LAST_NAME='$ol3', OWNER_PASSWORD='$opa3', OWNER_EMAIL='$oe3', OWNER_PHONE_NUMBER=$op3,OWNER_GENDER='$og33', OWNER_PHOTO='$oph3' WHERE OWNER_EMAIL='$owner_e2' ";
               $result=mysqli_query($database,$q);
-           echo "hjh";
+           //echo "hjh";
 
               mysqli_close($database);
-                header("Location: Costumer page.php");
-                exit(0);
+              header("Location:Costumer page.php");
+                //exit(0);
            }
         }
+    }
 ?>
