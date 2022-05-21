@@ -67,29 +67,33 @@
 	if (!( $database = mysqli_connect( "localhost", "root", "" )))
 	die( "<p>Could not connect to database</p>" );
 
-	if (!mysqli_select_db( $database, "web_project" ))
+	if (!mysqli_select_db( $database, "web_project2" ))
 		die( "<center><p>Could not open URL database</p></center>" );
-
 		if(isset($_POST['submit'])) {  
 		$email=$_POST['Email'];   
 		$query="SELECT OWNER_PASSWORD FROM pet_owner WHERE OWNER_EMAIL='$email'"; 
-		$query2="SELECT MANAGER_PASSWORD FROM clinic_manager WHERE MANAGER_EMAIL='$email'";
-		
 		$pass=mysqli_query($database, $query);
-		$pass2=mysqli_query($database, $query2);
-		$headers = "From: 441201300@student.ksu.edu.sa" ;
-		if(!$pass && !$pass2)
+		if(!$pass)
 		{
-			echo"<center><p> This email adress does not exist !</center></p>";
+			$query2="SELECT MANAGER_PASSWORD FROM clinic_manager WHERE MANAGER_EMAIL='$email'";
+			$pass2=mysqli_query($database, $query2);
+			if(!$pass2)
+			{
+				echo"<center><p> This email adress does not exist !</center></p>";
+			}
+			else
+			{
+				$row = mysqli_fetch_row($pass2);
+				echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+			}
 		}
-		else 
+		else
 		{
-			$passof=($pass)?$pass:$pass2;
-			//mail($email,"FelinFine Profile", "<p>your password of FelinFine Profile is :'$pass'</p>",$headers);
-			echo "<center><p style='color:red;'>your password of FelinFine Profile is :". $passof ."</p></center>";
+			$row = mysqli_fetch_row($pass);
+			echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
 		}
+		
 		mysqli_close($database);
 	}
 
 ?>
-
