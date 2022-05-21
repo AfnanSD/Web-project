@@ -26,6 +26,8 @@ $result=mysqli_query($database,$q);
     echo "";
      else 
      $oph='acc.jpg';
+     $_SESSION['pic']=$oph;
+
 }
  ?>
 <!DOCTYPE html>
@@ -109,7 +111,7 @@ $result=mysqli_query($database,$q);
                 {
                     print("<center><p>You can write a name using lower case letters only!</p></center>");
                 }else
-                if(!preg_match('/^[0-9]{10}+$/',$_POST["phone"]))
+                if(!preg_match('/^[0-9]{10}+$/',$_POST["phone"]) )
                 {
                     print("<center><p>Please enter the phone number correctly!</p></center>");
                 }else
@@ -121,9 +123,32 @@ $result=mysqli_query($database,$q);
                     $email = $_POST['email'];
 					$sql_e = "SELECT * FROM pet_owner WHERE OWNER_EMAIL='$email'";
 					$res_e = mysqli_query($database, $sql_e);
-                    if (mysqli_num_rows($res_e)  > 0) {
+                    
+                    if($_SESSION['Email']!=$email ){
+                    if (mysqli_num_rows($res_e)>0) {
                         echo"<br><center>Sorry... email address already taken</center>"; 	
                     }
+                    else
+                    {$of3=$_POST["Fname"];
+                        $ol3=$_POST["Lname"];
+                        $op3=$_POST["phone"];
+                        $oe3=$_POST["email"];
+                        $opa3=$_POST["password"];
+                        $og33=$_POST["o_gendero"];
+                        $oph3=$_POST["o_pic"];
+                        $nn="";
+                        if($oph3!=$nn){
+                        echo "";}
+                        else {
+                            $oph3=$_SESSION['pic'];}
+
+                        $q="UPDATE pet_owner SET FIRST_NAME='$of3',LAST_NAME='$ol3', OWNER_PASSWORD='$opa3', OWNER_EMAIL='$oe3', OWNER_PHONE_NUMBER=$op3,OWNER_GENDER='$og33', OWNER_PHOTO='$oph3' WHERE OWNER_EMAIL='$owner_e2' ";
+                        $result=mysqli_query($database,$q);
+                        $_SESSION['Email']=   $oe3   ;    
+                         mysqli_close($database);
+                        header("Location:Costumer page.php");}
+                }
+          
                 else{
               $of3=$_POST["Fname"];
               $ol3=$_POST["Lname"];
@@ -132,6 +157,13 @@ $result=mysqli_query($database,$q);
               $opa3=$_POST["password"];
               $og33=$_POST["o_gendero"];
               $oph3=$_POST["o_pic"];
+              $nn="";
+              if($oph3!=$nn){
+              echo "";}
+              else 
+              $oph3='acc.jpg';
+            
+
               $q="UPDATE pet_owner SET FIRST_NAME='$of3',LAST_NAME='$ol3', OWNER_PASSWORD='$opa3', OWNER_EMAIL='$oe3', OWNER_PHONE_NUMBER=$op3,OWNER_GENDER='$og33', OWNER_PHOTO='$oph3' WHERE OWNER_EMAIL='$owner_e2' ";
               $result=mysqli_query($database,$q);
            //echo "hjh";
