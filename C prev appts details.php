@@ -37,10 +37,13 @@
             echo "<td>" . $row['AID'] . "</td>";
             echo "<td>" . $row['TIME'] . "</td>";
             echo "<td>" . $row['DATE'] . "</td>";
-            echo "<td>" . $row['REVIEW'] . "</td>";
             echo "<td>" . $row['NOTE'] . "</td>";
             echo "<td>" . $row['SERVICE_NAME'] . "</td>";
-            echo "<td> <a href='C edit appt review.php?edetail=".$row['AID']."'> <img src='edit.jpg' alt='edit icon'height='15' width='15' ></a></td>";
+            $checking = $row['REVIEW'];
+            if (empty($checking)){
+            echo "<td> <a href='C edit appt review.php?edetail=".$row['AID']."'> <img src='edit.jpg' alt='edit icon'height='15' width='15' ></a></td>";}
+            else 
+              echo "<td>" . $row['REVIEW'] . "</td>";
             echo "</tr>";}
         ?>
 </tbody> 
@@ -50,10 +53,9 @@
         <th>AID</th>
         <th>TIME</th>
         <th>DATE</th>
-        <th>REVIEW</th>
         <th>NOTE</th>
         <th>SERVICE</th>
-        <th>EDIT REVIEW</th>
+        <th>REVIEW</th>
 	</tr>
 
 </thead>
