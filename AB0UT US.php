@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>About us</title>
 		<link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
+		<link rel="stylesheet" type="text/css" href="M Grid sheet.css">
 	</head>
 	<body>
 		<img src="logo 1.1.jpg" alt="logo" class="aboutUsImage">
@@ -67,7 +68,8 @@ foreach($row as $key )
  $result=mysqli_query($database,$q);
  $row=mysqli_fetch_row($result);
  foreach($row as $key )
- print("<a href=mail to:$key>info@Filine.Fine.com</a>");
+// print("<a href=mail to:$key></a>");//
+ echo '<br>or contact us via Email : <a href="mailto:'.$key.'">'.$key.'</a>';
  print('</p>');
 mysqli_close($database);
 
