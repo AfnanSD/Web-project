@@ -21,6 +21,21 @@
 		</style>
 	</head>
 	<body>
+	<span style="background-color:white;">
+		<table style="margin-top: -9px;margin-left: -7px; width: 105%; border-collapse:collapse; background-color:white" >
+							<tr>
+								<td width=20.6% height: 30px;><a style="text-decoration: none; color: #44475c;" href="C View profile.php">My Account</a></td><!--C profile.php-->
+								<td width=15.6%  height: 30px; background-color: #DCABB3;><a   style="text-decoration: none; color: #44475c;" href="C Add a pet.php">Add a pet</a></td>
+								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C View pet list.php">Pet List</a></td>
+								<td width=15.6%  height: 30px; ><a   style="text-decoration: none; color: #44475c;"href="C Add more services.php"> Services</a></td>
+								<td width=15.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="C previous appts.php">View previous appointments</a></td><!--was C Previous appointments.html-->
+								<td width=10.6%  height: 30px;><a   style="text-decoration: none; color: #44475c;"href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon.png" height="30" width="30"></a></td>
+								<!--<th>Time</th>
+								<th>Edit</th>
+								<th>Cancel</th>-->
+							</tr>
+				</table>
+		</span>
 		<?php
 			$host = 'localhost';
 			$user = 'root';

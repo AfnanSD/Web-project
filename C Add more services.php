@@ -72,7 +72,7 @@ box-shadow:1px 1px;
         $host = "localhost";
          $user = "root";
          $pass = "";
-         $dbname = "web_project";
+         $dbname = "web_project";//2
          $database=mysqli_connect($host,$user,$pass,$dbname);
      
 $q = "SELECT * from clinic_service ";

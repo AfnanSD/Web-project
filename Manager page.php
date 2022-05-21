@@ -31,7 +31,7 @@
                         <td width=10.2%><a href="M View appointments request.html"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->View Requests List</a></td>
                         <td width=14.2%><a href="M manage avail appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Manage available appointment</a></td>
                         <td width=14.2%><a href="M set available appts.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->Set available appointement</a></td>
-                        <td width=10.6%><a href="M review list.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->View review List</a></td>
+                        <td width=10.6%><a href="M reviews list.php"><!-- <img height="30" width="30" alt="View previous appointments here" src="5896962.png"> -->View review List</a></td>
                         <td width=0.2%><a href="signout.php" class="logoutb" style="float: right;"><img src="1250678.png" alt="logout icon" height="30" width="30"></a></td>
                         <!--<th>Time</th>
                         <th>Edit</th>
@@ -68,7 +68,7 @@
                 </nav>
             </div>
         -->
-            <div class="upcoming" style="width:136%;">
+            <div class="upcoming"><!--style="width:136%;"-->
                 <h3>Upcoming appoitments:</h3>
                     <?php
                         $query = "SELECT AID,SERVICE_NAME,DATE,TIME
@@ -129,7 +129,7 @@
                 </table>
 -->
             </div>
-            <div class="requests" style="width:136%;">
+            <div class="requests"><!--style="width:136%;"-->
                 <!--change previous to request list?-->
                 <h3>Previous appoitments:</h3>
                 <?php
