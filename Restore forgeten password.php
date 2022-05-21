@@ -49,7 +49,7 @@
 		<span><h1> Get your password back </h1></span>
 		<div>
 			<label> Enter the user E-mail <label>
-			<form method= "post" action="forgeten password.php"> 
+			<form method= "post" action="Restore forgeten password.php"> 
 				<span>
 					<br><input name="Email", placeholder="Email", type="text", size="25", maxlength="30">
 				</span>
@@ -58,7 +58,7 @@
 					<input type="reset", value="Clear">
 				</p>
 			</form>
-			<center><p><a href="Log in page.php">Go to log in page</p></center>
+			<center><p><a href="Log in page.php">Go to log in page</a></p></center>
 		</div>
   	</body>
 </html>
@@ -72,18 +72,21 @@
 
 		if(isset($_POST['submit'])) {  
 		$email=$_POST['Email'];   
-		$query="SELECT 'OWNER_PASSWORD' FROM 'pet_owner' WHERE OWNER_EMAIL='$email'"; 
-		$query2="SELECT 'MANAGER_PASSWORD' FROM 'clinic_manager' WHERE MANAGER_EMAIL='$email'";
+		$query="SELECT OWNER_PASSWORD FROM pet_owner WHERE OWNER_EMAIL='$email'"; 
+		$query2="SELECT MANAGER_PASSWORD FROM clinic_manager WHERE MANAGER_EMAIL='$email'";
 		
 		$pass=mysqli_query($database, $query);
 		$pass2=mysqli_query($database, $query2);
-		if(!$pass || !$pass2)
+		$headers = "From: 441201300@student.ksu.edu.sa" ;
+		if(!$pass && !$pass2)
 		{
-			die("<p> Thie email adress does not exist !</p>");
+			echo"<center><p> This email adress does not exist !</center></p>";
 		}
 		else 
 		{
-			mail($email,"FelinFine Profile", "your password of FelinFine Profile is :'$pass'");
+			$passof=($pass)?$pass:$pass2;
+			//mail($email,"FelinFine Profile", "<p>your password of FelinFine Profile is :'$pass'</p>",$headers);
+			echo "<center><p style='color:red;'>your password of FelinFine Profile is :". $passof ."</p></center>";
 		}
 		mysqli_close($database);
 	}
