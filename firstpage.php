@@ -217,7 +217,7 @@ gap:2rem;}
     margin-left:30%;
     padding-top: 15px;
     padding-bottom: 10px;
-    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    /*font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;*/
     font-size: large;
 }
 
