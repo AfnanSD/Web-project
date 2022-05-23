@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="tinyLogo.PNG" />
     <link rel="stylesheet" type="text/css" href="styleForRequestAndEdit.css">
-    <link rel="stylesheet" type="text/css" href="C Grid sheet.css">
+    <!--<link rel="stylesheet" type="text/css" href="C Grid sheet.css">-->
         <title>List of reviews</title>
     </head>
 
@@ -56,15 +56,19 @@
 //                
 //
 //<tr>faebd7
+
+                    //<table border="1">
+                    //<thead>
+                    //<tr>
             $N=" ";
             $q = "SELECT REVIEW,PET_OWNER_EMAIL FROM appointment,book_appointment WHERE appointment.AID=book_appointment.AID and REVIEW is not null ";
             $result=mysqli_query($database,$q);
             $nn= mysqli_num_rows($result);
             if($nn!=0){
                 echo'
-                    <table border="1">
-                    <thead>
-                    <tr>
+                <table border="1" align="center" style="width: 100%;">
+                <thead>
+                <tr style="background-color: #faebd7; color: #695e59 ;">
                         <th>Pet owner email</th>
                         <th>Review</th>
                     </tr>

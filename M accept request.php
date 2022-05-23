@@ -20,7 +20,8 @@
     
     $result = mysqli_query($database,$query);
     if($result){
-        header("Location: Manager page.php");//
+        //header("Location: Manager page.php");//
+        header("Location: M request list.php");
         exit();
     }
 ?>  
