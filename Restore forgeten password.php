@@ -68,7 +68,7 @@
 	if (!( $database = mysqli_connect( "localhost", "root", "" )))
 	die( "<p>Could not connect to database</p>" );
 
-	if (!mysqli_select_db( $database, "web_project2" ))
+	if (!mysqli_select_db( $database, "web_project" ))//2
 		die( "<center><p>Could not open URL database</p></center>" );
 		if(isset($_POST['submit'])) {  
 		$email=$_POST['Email'];   
@@ -110,8 +110,15 @@
 
 					$pass1=mysqli_query($database, $query1);
 					$pass2=mysqli_query($database, $query2);
+
+					$fname = mysqli_fetch_assoc($pass1);
+					$lname = mysqli_fetch_assoc($pass2);
+
+					$fname1 = $fname['FIRST_NAME'];
+					$lname1 = $lname['LAST_NAME'];
 					
-					if($_POST['Fname']==$pass1 && $_POST['Lname']==$pass2)
+					//pass1 pass2
+					if($_POST['Fname']==$fname1 && $_POST['Lname']==$lname1)
 					{
 						echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
 					}
