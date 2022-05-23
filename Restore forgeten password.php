@@ -59,11 +59,12 @@
 				</p>
 			</form>
 			<center><p><a href="Log in page.php">Go to log in page</a></p></center>
-		</div>
+		<!--</div>-->
   	</body>
 </html>
 <?php
 
+  
 	if (!( $database = mysqli_connect( "localhost", "root", "" )))
 	die( "<p>Could not connect to database</p>" );
 
@@ -92,11 +93,43 @@
 			$row = mysqli_fetch_row($pass);
 			if(!$row)
 			{
-				echo"<center><p> This email adress does not exist !</center></p>";
+				echo"<center><p style='color:red;'> This email address does not exist !</center></p>";
 			}
 			else{
+				echo "<center><form method='POST' action='Restore forgeten password.php'<center><p style='color:red;'> Please Enter Your first and last name</p></center>".
+				"<span><input name='Fname', placeholder='First name', type='text', size='25', maxlength='30' required><br>".
+				"<input name='Lname', placeholder='Last name', type='text', size='25', maxlength='30' required><br>".
+				'<input type="submit", value="Submit" name="submit2"></span></form></center></div>';
 
-			echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+
+				if(isset($_POST['submit2']))
+				{
+				
+					$query1="SELECT FIRST_NAME FROM pet_owner WHERE OWNER_EMAIL='$email'"; 
+					$query2="SELECT LAST_NAME FROM pet_owner WHERE OWNER_EMAIL='$email'"; 
+
+					$pass1=mysqli_query($database, $query1);
+					$pass2=mysqli_query($database, $query2);
+					
+					if($_POST['Fname']==$pass1 && $_POST['Lname']==$pass2)
+					{
+						echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+					}
+					else
+					{
+						echo "<center><p style='color:red;'>Sorry, You entered wrong values !!</p></center>";
+					}
+				
+				}
+
+				//echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+				/*$to=$email;
+				$subject='FelinFine password restore';
+				$msg="<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
+				$headers='FROM:  The Sender Name<FelinFine@gmail.com';
+				$headers.="Content-type: text/html\r\n";
+
+				mail($to,$subject,$msg,$headers);*/
 			}
 		//}
 		
