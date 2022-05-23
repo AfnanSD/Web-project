@@ -118,7 +118,7 @@
 					$lname1 = $lname['LAST_NAME'];
 					
 					//pass1 pass2
-					if($_POST['Fname']==$fname1 && $_POST['Lname']==$lname1)
+					if($_POST['Fname']==$fname && $_POST['Lname']==$lname)
 					{
 						echo "<center><p style='color:red;'>your password of FelinFine Profile is :".$row[0]."</p></center>";
 					}
