@@ -93,8 +93,8 @@ mysqli_close($database);
                             <th>Gender:</th>
                             <th>Status</th>
 
-                             <th> Medical record:</th>
-                            <th> vaccinated:</th>
+                             <th> vaccinations: </th>
+                            <th> Medical record:</th>
 
                     </thead> 
                 </table>       
