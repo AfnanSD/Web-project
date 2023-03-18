@@ -1,0 +1,100 @@
+.logo { grid-area: logo;}
+.profile { grid-area: profile;}
+.add { grid-area: add;}
+.list { grid-area: list;}
+.upcoming { grid-area: upcoming;}
+.requests { grid-area: requests;}
+.previous { grid-area: previous;}
+.contact { 
+    grid-area: contact;
+    /*font-family: "Lucida Console", "Courier New", monospace;*/
+    color: rgb(59, 65, 94);
+}
+
+.container {
+    display: grid;
+    /*grid-template-areas: 'logo logo'
+    'upcoming profile'
+    'upcoming add'
+    'requests list'
+    'requests previous'
+    'contact contact';*/
+    grid-template-areas: 'logo logo logo'
+    'upcoming upcoming upcoming'
+    'upcoming upcoming upcoming'
+    'requests requests requests'
+    'requests requests requests'
+    'contact contact contact';
+    /*
+    'logo logo logo'
+    'upcoming upcoming profile'
+    'upcoming upcoming add'
+    'requests requests list'
+    'requests requests previous'
+    'contact contact contact';
+    */
+
+    gap: 10px;
+}
+
+.container div{
+    text-align: center;
+    background-color: #FAE8E0;
+    padding: 35px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    height: 30px;
+    background-color: #DCABB3;
+}
+
+/*td:hover {background-color: #ffffff;}*/
+a { 
+    text-decoration: none;
+    color: #44475c;
+}
+a:hover{ color: rgb(100, 100, 121);}
+
+#buttonlike,.buttonlike:link, .buttonlike:visited {
+    font: 13px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-radius: 3px;
+    border: 1px solid #333333;
+}
+
+#link:hover{
+  /*  font: 30px ;*/
+    /*font-size: larger;*/
+    text-decoration: none;
+    background-color: #f3d2c4;
+   /* padding: 15px 15px 15px 15px;*/
+}
+nav ul {
+    display: none; 
+    list-style: none;
+}
+nav:hover ul {
+    display: block; 
+} 
+li {
+    border:2px solid white;
+    background-color: #f3d2c4;
+
+}
+.li2:hover{
+    text-decoration: none;
+    background-color: #f3d2c4;
+}
+
+
+h3 { text-align: left;}
+
+.error {color: #FF0000;}

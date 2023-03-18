@@ -55,9 +55,9 @@ $result=mysqli_query($database,$q);
 $nn= mysqli_num_rows($result);
 if($nn!=0){
 while($row=mysqli_fetch_assoc($result)){
-    if($RR !=$N){
-    $RR=$row['REVIEW'];
-    echo  '<div class="s_box">';
+$RR=$row['REVIEW'];
+    if($RR !=$N)
+    {echo  '<div class="s_box">';
     echo $RR;
      echo  '</div>';}
 }
